@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:26:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/30 14:59:39 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:18:04 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
 	PhoneBook(void);
 	~PhoneBook(void);
 
-	void	addContact(void);
+	bool	addContact(void);
 	bool	searchContact(void);
 
 private:

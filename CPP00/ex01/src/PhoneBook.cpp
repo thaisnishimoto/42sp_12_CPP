@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:24:53 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/30 14:59:47 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:35:35 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ std::string	PhoneBook::_getData(std::string field) const
 	{
 		std::cout << "Enter " << field << ": ";
 		std::getline(std::cin, data);
+		if (!std::cin)
+			return ("");
 		if (data.empty())
 			std::cout << "Field can't be empty. " << std::endl;
 	}
@@ -52,7 +54,10 @@ void	PhoneBook::addContact(void)
 	contact_data = PhoneBook::_getData("darkest secret");
 	new_contact.setDarkestSecret(contact_data);
 
+	if (contact_data.empty())
+		return (false);
 	this->_contacts[this->_index % PhoneBook::MAX_CONTACTS] = new_contact;
 	this->_index++;
 	std::cout << "New contact has been successfully added!" << std::endl;
+	return (true);
 }

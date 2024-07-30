@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:38:27 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/30 10:54:33 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/30 16:34:10 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,19 @@ int	main(void)
 	{
 		std::cout << "Please enter a command (ADD, SEARCH or EXIT): ";
 		std::getline(std::cin, user_input);
-		if (user_input == "ADD")
-			my_phonebook.addContact();
+		if (!std::cin)
+		{
+			std::cout << std::endl << "Goodbye!" << std::endl;
+			break ;
+		}
+		else if (user_input == "ADD")
+		{
+			if (!my_phonebook.addContact())
+			{
+				std::cout << std::endl << "Goodbye!" << std::endl;
+				break ;
+			}
+		}
 	//	else if (user_input == "SEARCH")
 		else if (user_input == "EXIT")
 		{
