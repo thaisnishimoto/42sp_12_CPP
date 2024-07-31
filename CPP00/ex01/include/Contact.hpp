@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:26:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/30 18:31:08 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/31 00:03:05 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ public:
 	std::string	getNickname(void) const;
 	std::string	getPhoneNumber(void) const;
 	std::string	getDarkestSecret(void) const;
+	void	displayInfo(void) const;
 	
 	bool	setFirstName(std::string input);
 	bool	setLastName(std::string input);
