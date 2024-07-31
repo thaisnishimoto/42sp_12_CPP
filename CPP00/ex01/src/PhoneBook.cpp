@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:24:53 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/30 23:32:54 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/30 23:37:53 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,9 @@ std::string	PhoneBook::_truncateData(std::string data) const
 	{
 		trunc_data = data.substr(0, 10);
 		trunc_data.replace(9, 1, ".");
+		return (trunc_data);
 	}
-	return (trunc_data);
+	return (data);
 }
 
 void	PhoneBook::searchContact(void) const
