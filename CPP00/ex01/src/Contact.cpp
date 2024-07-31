@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:24:53 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/30 12:50:09 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/30 18:31:37 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ std::string	Contact::getLastName(void) const
 	return (this->_lastName);
 }
 
-std::string	Contact::getNickame(void) const
+std::string	Contact::getNickname(void) const
 {
 	return (this->_nickname);
 }

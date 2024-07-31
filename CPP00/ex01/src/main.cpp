@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:38:27 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/30 16:34:10 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/30 18:15:20 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ int	main(void)
 				break ;
 			}
 		}
-	//	else if (user_input == "SEARCH")
+		else if (user_input == "SEARCH")
+		{
+			my_phonebook.searchContact();
+		}
 		else if (user_input == "EXIT")
 		{
 			std::cout << "Thank you for using Phone Book! Until next time, take care!" << std::endl;

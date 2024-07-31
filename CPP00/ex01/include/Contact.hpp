@@ -6,14 +6,14 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:26:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/30 12:47:51 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/30 18:31:08 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-#include <iostream>
+# include <iostream>
 
 class	Contact {
 
@@ -24,7 +24,7 @@ public:
 
 	std::string	getFirstName(void) const;
 	std::string	getLastName(void) const;
-	std::string	getNickame(void) const;
+	std::string	getNickname(void) const;
 	std::string	getPhoneNumber(void) const;
 	std::string	getDarkestSecret(void) const;
 	

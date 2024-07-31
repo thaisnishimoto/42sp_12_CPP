@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:26:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/30 16:18:04 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/30 23:09:53 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "Contact.hpp"
 # include <iostream>
+# include <iomanip>
 
 class	PhoneBook {
 
@@ -23,14 +24,16 @@ public:
 	~PhoneBook(void);
 
 	bool	addContact(void);
-	bool	searchContact(void);
+	void	searchContact(void) const;
 
 private:
 	static const int	MAX_CONTACTS = 8;
 	Contact	_contacts[MAX_CONTACTS];
 	int	_index;
 
-	std::string	_getData(std::string field) const;
+	std::string	_getInputData(std::string field) const;
+	void	_displayContactList(void) const;
+	std::string	_truncateData(std::string data) const;
 };
 
 #endif
