@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:24:53 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/30 23:37:53 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/31 00:25:30 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,51 @@ std::string	PhoneBook::_getInputData(std::string field) const
 	return (data);
 }
 
+std::string	PhoneBook::_truncateData(std::string data) const
+{
+	std::string	trunc_data;
+
+	if (data.length() > 10)
+	{
+		trunc_data = data.substr(0, 10);
+		trunc_data.replace(9, 1, ".");
+		return (trunc_data);
+	}
+	return (data);
+}
+
+void	PhoneBook::_displayContactList(void) const
+{
+	std::cout << "_____________________________________________" << std::endl;
+	std::cout << "|     INDEX|FIRST NAME| LAST NAME|  NICKNAME|" << std::endl;
+	std::cout << "|----------|----------|----------|----------|" << std::endl;
+
+	for (int i = 0; i < PhoneBook::MAX_CONTACTS; i++)
+	{
+		std::cout << "|" << std::setw(10) << std::right << i + 1 << "|";
+		std::cout << std::setw(10) << std::right << this->_truncateData(this->_contacts[i].getFirstName()) << "|";
+		std::cout << std::setw(10) << std::right << this->_truncateData(this->_contacts[i].getLastName()) << "|";
+		std::cout << std::setw(10) << std::right << this->_truncateData(this->_contacts[i].getNickname()) << "|";
+		std::cout << std::endl;
+	}
+
+	std::cout << "|----------|----------|----------|----------|" << std::endl;
+	std::cout << std::endl;
+}
+
+void	PhoneBook::searchContact(void) const
+{
+	size_t	index;
+
+	this->_displayContactList();
+
+	std::cout << "*Enter index of contact you are searching: ";
+	std::cin >> index;
+	this->_contacts[index - 1].displayInfo();
+	std::cout << std::endl;
+	return ;
+}
+
 bool	PhoneBook::addContact(void)
 {
 	Contact	new_contact("");
@@ -61,41 +106,4 @@ bool	PhoneBook::addContact(void)
 	std::cout << "New contact has been successfully added!" << std::endl;
 	std::cout << std::endl;
 	return (true);
-}
-
-std::string	PhoneBook::_truncateData(std::string data) const
-{
-	std::string	trunc_data;
-
-	if (data.length() > 10)
-	{
-		trunc_data = data.substr(0, 10);
-		trunc_data.replace(9, 1, ".");
-		return (trunc_data);
-	}
-	return (data);
-}
-
-void	PhoneBook::searchContact(void) const
-{
-	this->_displayContactList();
-}
-
-void	PhoneBook::_displayContactList(void) const
-{
-	std::cout << "_____________________________________________" << std::endl;
-	std::cout << "|     INDEX|FIRST NAME| LAST NAME|  NICKNAME|" << std::endl;
-	std::cout << "|----------|----------|----------|----------|" << std::endl;
-
-	for (int i = 0; i < PhoneBook::MAX_CONTACTS; i++)
-	{
-		std::cout << "|" << std::setw(10) << std::right << i + 1 << "|";
-		std::cout << std::setw(10) << std::right << this->_truncateData(this->_contacts[i].getFirstName()) << "|";
-		std::cout << std::setw(10) << std::right << this->_truncateData(this->_contacts[i].getLastName()) << "|";
-		std::cout << std::setw(10) << std::right << this->_truncateData(this->_contacts[i].getNickname()) << "|";
-		std::cout << std::endl;
-	}
-
-	std::cout << "|----------|----------|----------|----------|" << std::endl;
-	std::cout << std::endl;
 }
