@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:24:53 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/31 00:20:12 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/31 11:31:37 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	Contact::displayInfo(void) const
 	std::cout << "Nickname: " << this->_nickname << std::endl;	
 	std::cout << "Phone number: " << this->_phoneNumber << std::endl;	
 	std::cout << "Darkest secret: " << this->_darkestSecret << std::endl;	
+	std::cout << std::endl;
 	return ;
 }
 

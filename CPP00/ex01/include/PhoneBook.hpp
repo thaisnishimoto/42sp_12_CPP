@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:26:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/30 23:33:37 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/31 10:47:09 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "Contact.hpp"
 # include <iostream>
 # include <iomanip>
+# include <cstdlib>
 
 class	PhoneBook {
 

@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:24:53 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/31 00:25:30 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/31 11:48:40 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,23 @@ void	PhoneBook::_displayContactList(void) const
 
 void	PhoneBook::searchContact(void) const
 {
-	size_t	index;
+	std::string	input;
+	size_t	index_value;
 
 	this->_displayContactList();
 
 	std::cout << "*Enter index of contact you are searching: ";
-	std::cin >> index;
-	this->_contacts[index - 1].displayInfo();
+	std::getline(std::cin, input);
+	if (input.length() ==  1)
+	{
+		index_value = atoi(input.c_str());
+		if (index_value <= 8 && index_value > 0)
+		{
+			this->_contacts[index_value - 1].displayInfo();
+			return ;
+		}
+	}
+	std::cout << "Invalid index!" << std::endl;
 	std::cout << std::endl;
 	return ;
 }
@@ -98,9 +108,9 @@ bool	PhoneBook::addContact(void)
 	new_contact.setPhoneNumber(contact_data);
 	contact_data = PhoneBook::_getInputData("darkest secret");
 	new_contact.setDarkestSecret(contact_data);
-
 	if (contact_data.empty())
 		return (false);
+
 	this->_contacts[this->_index % PhoneBook::MAX_CONTACTS] = new_contact;
 	this->_index++;
 	std::cout << "New contact has been successfully added!" << std::endl;
