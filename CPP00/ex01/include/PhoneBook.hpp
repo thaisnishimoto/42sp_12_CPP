@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:26:58 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/30 23:09:53 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/30 23:33:37 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class	PhoneBook {
 
 public:
-	PhoneBook(void);
+	PhoneBook(int num);
 	~PhoneBook(void);
 
 	bool	addContact(void);

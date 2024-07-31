@@ -6,13 +6,13 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:24:53 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/30 23:24:05 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/30 23:32:54 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-PhoneBook::PhoneBook(void)
+PhoneBook::PhoneBook(int num) : _index(num)
 {
 	return ;
 }

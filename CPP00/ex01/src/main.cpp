@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 12:38:27 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/07/30 18:15:20 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/07/30 23:33:12 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(void)
 {
-	PhoneBook	my_phonebook;	
+	PhoneBook	my_phonebook(0);	
 	std::string	user_input;
 
 	std::cout << "Welcome to Phone Book!" << std::endl;
