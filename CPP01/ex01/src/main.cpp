@@ -6,29 +6,30 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 22:26:19 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/02 12:24:01 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/08/02 14:45:50 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-int	main(int argc, char **argv)
+int	main(void)
 {
-	int	num;
+	int	N;
 	int	i;
 
 	std::cout << "TEST 1. Lonely horde" << std::endl;
-	num = 1;
-	Zombie	*small_horde = zombieHorde(num, "Gru");
-	for (i = 0; i < num, i++)
-		small_horde[i]->announce();
-	delete [] small_horde;
+	N = 1;
+	Zombie	*lonely_horde = zombieHorde(N, "Gru");
+	for (i = 0; i < N; i++)
+		lonely_horde[i].announce();
+	delete [] lonely_horde;
+	std::cout << std::endl;
 
 	std::cout << "TEST 2. Army horde" << std::endl;
-	num = 10;
-	Zombie	*army_horde = zombieHorde(num, "Minion");
-	for (i = 0; i < num, i++)
-		army_horde[i]->announce();
+	N = 10;
+	Zombie	*army_horde = zombieHorde(N, "Minion");
+	for (i = 0; i < N; i++)
+		army_horde[i].announce();
 	delete [] army_horde;
 
 	return (0);
