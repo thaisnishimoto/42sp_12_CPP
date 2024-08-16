@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 17:39:12 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/16 01:14:56 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/08/16 01:46:13 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,34 @@
 
 void	Harl::_debug(void)
 {
-	std::cout << "*DEBUG MESSAGE*" << std::endl;
+	std::cout << "[ DEBUG ]" << std::endl;
 	std::cout << "I love having extra bacon for my 7XL-double-cheese-"
-		<< "triple-pickle-specialketchup burger. I really do!"
+		<< "triple-pickle-specialketchup burger." << std::endl
+		<< "I really do!" << std::endl
 		<< std::endl;
 }
 
 void	Harl::_info(void)
 {
-	std::cout << "*INFO MESSAGE*" << std::endl;
-	std::cout << "I cannot believe adding extra bacon costs more money."
-		<< "You didn’t put enough bacon in my burger!"
-		<< "If you did, I wouldn’t be asking for more!"
+	std::cout << "[ INFO ]" << std::endl;
+	std::cout << "I cannot believe adding extra bacon costs more money." << std::endl
+		<< "You didn’t put enough bacon in my burger! " 
+		<< "If you did, I wouldn’t be asking for more!" << std::endl
 		<< std::endl;
 }
 
 void	Harl::_warning(void)
 {
-	std::cout << "*WARNING MESSAGE*" << std::endl;
-	std::cout << "I think I deserve to have some extra bacon for free."
-		<< "I’ve been coming for years whereas you started working here since last month."
+	std::cout << "[ WARNING ]" << std::endl;
+	std::cout << "I think I deserve to have some extra bacon for free." << std::endl
+		<< "I’ve been coming for years whereas you started working here since last month." << std::endl
 		<< std::endl;
 }
 
 void	Harl::_error(void)
 {
-	std::cout << "*ERROR MESSAGE*" << std::endl;
-	std::cout << "This is unacceptable! I want to speak to the manager now."
+	std::cout << "[ ERROR ]" << std::endl;
+	std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl
 		<< std::endl;
 }
 
