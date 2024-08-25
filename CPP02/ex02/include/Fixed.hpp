@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:27:36 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/25 19:20:55 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/08/25 20:38:16 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ public:
 	Fixed&	operator--(void);
 	Fixed	operator--(int);
 
+	static const Fixed&	min(Fixed const& num1, Fixed const& num2);
+	static Fixed&	min(Fixed& num1, Fixed& num2);
+	static const Fixed&	max(Fixed const& num1, Fixed const& num2);
+	static Fixed&	max(Fixed& num1, Fixed& num2);
 private:
 	int	_rawValue;
 	static const int	_FRACTIONAL_BITS = 8;	

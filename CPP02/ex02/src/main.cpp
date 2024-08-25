@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:21:59 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/25 19:55:07 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/08/25 20:58:00 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(void)
 	
 		std::cout << b << std::endl;
 	
-//		std::cout << Fixed::max(a, b) << std::endl;
+		std::cout << Fixed::max(a, b) << std::endl;
 		std::cout << std::endl;
 	}
 	{
@@ -95,6 +95,26 @@ int	main(void)
 		std::cout << "Value of 'a' after post-decrement: " << a << std::endl;
 
 		std::cout << std::endl;
+	}
+	{
+		std::cout << "5. MIN/MAXT TESTS" << std::endl;
+		Fixed a(5.05f);
+		Fixed b(3.14f);
+		
+		Fixed& min1 = Fixed::min(a, b);            // Calls the non-const version
+		std::cout << "Min = " << min1 << std::endl;
+		const Fixed& min2 = Fixed::min(a, b);      // Also calls the non-const version
+		std::cout << "Min = " << min2 << std::endl;
+		Fixed& max1 = Fixed::max(a, b);            // Calls the non-const version
+		std::cout << "Max = " << max1 << std::endl;
+		
+		const Fixed c(2.71f);
+		const Fixed d(4.0f);
+		
+		const Fixed& min3 = Fixed::min(c, d);      // Calls the const version
+		std::cout << "Min = " << min3 << std::endl;
+		const Fixed& max2 = Fixed::max(c, d);      // Calls the const version
+		std::cout << "Max = " << max2 << std::endl;
 	}
 	return 0;
 }

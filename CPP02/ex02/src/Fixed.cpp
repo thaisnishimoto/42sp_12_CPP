@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:26:59 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/25 19:24:02 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/08/25 20:54:52 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,39 @@ Fixed	Fixed::operator--(int)
 	this->_rawValue--;
 	return temp;
 }
+
+const Fixed&	Fixed::min(Fixed const& num1, Fixed const& num2)
+{
+	std::cout << "Const min function called" << std::endl;
+	if (num1.getRawBits() < num2.getRawBits())
+		return num1;
+	return num2;
+}
+
+Fixed&	Fixed::min(Fixed& num1, Fixed& num2)
+{
+	std::cout << "Min function called" << std::endl;
+	if (num1.getRawBits() < num2.getRawBits())
+		return num1;
+	return num2;
+}
+
+const Fixed&	Fixed::max(Fixed const& num1, Fixed const& num2)
+{
+	std::cout << "Const max function called" << std::endl;
+	if (num1.getRawBits() > num2.getRawBits())
+		return num1;
+	return num2;
+}
+
+Fixed&	Fixed::max(Fixed& num1, Fixed& num2)
+{
+	std::cout << "Max function called" << std::endl;
+	if (num1.getRawBits() > num2.getRawBits())
+		return num1;
+	return num2;
+}
+
 std::ostream&	operator<<(std::ostream& o, Fixed const& rhs)
 {
 	o << rhs.toFloat();
