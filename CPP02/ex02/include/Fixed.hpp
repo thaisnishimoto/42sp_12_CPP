@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 10:27:36 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/25 02:37:52 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/08/25 19:20:55 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,23 @@ public:
 	float	toFloat(void) const;
 
 	Fixed&	operator=(Fixed const& rhs); //Copy assignment - updates current instance
+
 	bool	operator>(Fixed const& rhs) const;
 	bool	operator<(Fixed const& rhs) const;
 	bool	operator>=(Fixed const& rhs) const;
 	bool	operator<=(Fixed const& rhs) const;
 	bool	operator==(Fixed const& rhs) const;
 	bool	operator!=(Fixed const& rhs) const;
+
 	Fixed	operator+(Fixed const& rhs) const;
 	Fixed	operator-(Fixed const& rhs) const;
 	Fixed	operator*(Fixed const& rhs) const;
 	Fixed	operator/(Fixed const& rhs) const;
-//	Fixed&	operator++(Fixed const& rhs) const;
+
+	Fixed&	operator++(void);
+	Fixed	operator++(int);
+	Fixed&	operator--(void);
+	Fixed	operator--(int);
 
 private:
 	int	_rawValue;
