@@ -6,17 +6,19 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 12:25:13 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/26 16:36:32 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/08/26 21:20:33 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
+// Determinant formula:
+// area = abs 0.5 |(x1 - y2) (x1 - x3)|
+//                |(y1 - y2) (y1 - y3)|
 Fixed	calcArea(Point const a, Point const b, Point const c)
 {
-	Fixed	area = (a.getX() * (b.getY() - c.getY()) +
-			b.getX() * (c.getY() - a.getY()) +
-			c.getX() * (a.getY() - b.getY())) / Fixed(2);
+	Fixed	area = ((a.getX() - b.getX()) * (a.getY() - c.getY()) -
+			(a.getY() - b.getY()) * (a.getX() - c.getX())) / Fixed(2); 
 	if (area < 0)
 		area = area * Fixed(-1); 
 	return area;
