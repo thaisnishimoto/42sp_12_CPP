@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:34:55 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/28 23:33:27 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/08/29 01:21:16 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,17 @@ public:
 	int	getHitPoints(void) const;
 	int	getEnergyPoints(void) const;
 	int	getAttackDamage(void) const;
+	void	printStatus(void) const;
 
 	void	attack(const std::string& target);
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 
 protected:
-	ClapTrap(std::string name, int hp, int ep, int ad);
+	void	setName(std::string name);
+	void	setHitPoints(int hp);
+	void	setEnergyPoints(int ep);
+	void	setAttackDamage(int ad);
 
 private:
 	std::string	_name;
