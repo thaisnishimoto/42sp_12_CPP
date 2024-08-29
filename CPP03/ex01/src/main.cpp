@@ -6,46 +6,47 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 00:07:53 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/28 11:46:56 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/08/29 01:19:14 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 #include "Colors.hpp"
 
 int	main(void)
 {
 	ClapTrap	a("Rob");
+	ScavTrap	b("Rust");
 	std::cout << std::endl;
 
-	std::cout << BOLDYELLOW << "*Rob attacks enemy 5 times*" << RESET << std::endl;
-	for (int i = 0; i < 5; i++)
-		a.attack("enemy");
+	std::cout << BOLDYELLOW << "*Player's initial status*" << RESET << std::endl;
+	a.printStatus();
+	b.printStatus();
 	std::cout << std::endl;
 
-	std::cout << BOLDYELLOW << "*Rob takes 8 points of damage*" << RESET << std::endl;
-	a.takeDamage(8);
+	std::cout << BOLDYELLOW << "*Rob tries to attack Rust*" << RESET << std::endl;
+	a.attack(b.getName());
+	b.takeDamage(a.getAttackDamage());
 	std::cout << std::endl;
 
-	std::cout << BOLDYELLOW << "*Rob repairs 3 points of health*" << RESET << std::endl;
-	a.beRepaired(3);
+	std::cout << BOLDYELLOW << "*Rust brutally attacks Rob*" << RESET << std::endl;
+	b.attack(a.getName());
+	a.takeDamage(b.getAttackDamage());
 	std::cout << std::endl;
 
-	std::cout << BOLDYELLOW << "*Rob attacks until is has no more energy*" << RESET << std::endl;
-	for (int i = 0; i < 5; i++)
-		a.attack("enemy");
+	std::cout << BOLDYELLOW << "*Rob tries to attack Rust again*" << RESET << std::endl;
+	a.attack(b.getName());
 	std::cout << std::endl;
 
-	std::cout << BOLDYELLOW << "*Rob tries to repair more of his health*" << RESET << std::endl;
-	a.beRepaired(3);
+	std::cout << BOLDYELLOW << "*Rust wins and decides to repair by retiring*" << RESET << std::endl;
+	b.beRepaired(100);
+	b.guardGate();
 	std::cout << std::endl;
 
-	std::cout << BOLDYELLOW << "*Rob takes 100 points of damage*" << RESET << std::endl;
-	a.takeDamage(100);
-	std::cout << std::endl;
-
-	std::cout << BOLDYELLOW << "*Rob tries to attack one last time*" << RESET << std::endl;
-	a.attack("enemy");
+	std::cout << BOLDYELLOW << "*Player's final status*" << RESET << std::endl;
+	a.printStatus();
+	b.printStatus();
 	std::cout << std::endl;
 	return 0;
 }
