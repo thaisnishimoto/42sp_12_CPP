@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 11:24:22 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/31 16:05:50 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/08/31 18:10:40 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ FragTrap::~FragTrap(void)
 
 void	FragTrap::highFivesGuys(void)
 {
-	std::cout << "FragTrap " << this->getName() << " requests hith fives!!!" << std::endl;
+	std::cout << "FragTrap " << this->getName() << " requests high fives!!!" << std::endl;
 	return ;
 }
