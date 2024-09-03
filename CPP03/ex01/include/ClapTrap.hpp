@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:34:55 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/29 01:21:16 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/03 11:29:23 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,6 @@ public:
 	void	beRepaired(unsigned int amount);
 
 protected:
-	void	setName(std::string name);
-	void	setHitPoints(int hp);
-	void	setEnergyPoints(int ep);
-	void	setAttackDamage(int ad);
-
-private:
 	std::string	_name;
 	int	_hitPoints;
 	int	_energyPoints;
