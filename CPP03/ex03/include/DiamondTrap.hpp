@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/30 17:00:04 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/31 17:05:35 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/03 13:53:33 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <iostream>
 # include <string>
 
-class	DiamondTrap : public ScavTrap, public FragTrap {
+class	DiamondTrap : public FragTrap, public ScavTrap {
 
 public:
 	DiamondTrap(void);
