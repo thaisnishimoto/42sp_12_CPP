@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 18:34:38 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/08/29 18:25:27 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/03 11:45:49 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ ClapTrap&	ClapTrap::operator=(ClapTrap const& rhs)
 	std::cout << "ClapTrap assignment operator called" << std::endl;
 	if (this != &rhs)
 	{
-		this->_name = rhs.getName();
-		this->_hitPoints = rhs.getHitPoints();
-		this->_energyPoints = rhs.getEnergyPoints();
-		this->_attackDamage = rhs.getAttackDamage();
+		this->_name = rhs._name;
+		this->_hitPoints = rhs._hitPoints;
+		this->_energyPoints = rhs._energyPoints;
+		this->_attackDamage = rhs._attackDamage;
 	}
 	return *this;
 }
@@ -118,30 +118,6 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	}
 	else
 		std::cout << this->_name << " has no energy left to repair itself." << std::endl;
-	return ;
-}
-
-void	ClapTrap::setName(std::string name)
-{
-	this->_name = name;
-	return ;
-}
-
-void	ClapTrap::setHitPoints(int hp)
-{
-	this->_hitPoints = hp;
-	return ;
-}
-
-void	ClapTrap::setEnergyPoints(int ep)
-{
-	this->_energyPoints = ep;
-	return ;
-}
-
-void	ClapTrap::setAttackDamage(int ad)
-{
-	this->_attackDamage = ad;
 	return ;
 }
 
