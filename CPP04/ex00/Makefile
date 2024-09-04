@@ -12,7 +12,7 @@ HEADER_PATH = ./include
 
 #================================FILES=========================================#
 
-NAME = poly 
+NAME = poly_animals 
 SRC = $(wildcard $(SRC_PATH)/*.cpp)
 OBJ = $(SRC:.cpp=.o)
 HEADER = $(wildcard $(HEADER_PATH)/*.hpp)
