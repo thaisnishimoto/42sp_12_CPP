@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:21:04 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/06 18:38:01 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/06 19:03:18 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	Character::equip(AMateria* m)
 			return ;
 		}
 	}
-	std::cout << RED << this->_name << "`s inventory is full" << RESET << std::endl;
+	std::cout << RED << this->_name << "`s inventory is full. Materia input will be deleted" << RESET << std::endl;
+	delete m;
 }
 
 void	Character::unequip(int idx)
