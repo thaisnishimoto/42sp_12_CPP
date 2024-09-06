@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 14:45:49 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/06 18:04:40 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/06 18:43:29 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 MateriaSource::MateriaSource()
 {
-	std::cout << "MateriaSource default constructor called" << std::endl;
 	for (int i = 0; i < MEMORY_SIZE; i++)
 		this->_memory[i] = NULL;
 }
 
 MateriaSource::MateriaSource(const MateriaSource& src)
 {
-	std::cout << "MateriaSource copy constructor called" << std::endl;
 	for (int i = 0; i < MEMORY_SIZE; i++)
 		this->_memory[i] = NULL;
 	*this = src;
@@ -44,7 +42,6 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& rhs)
 
 MateriaSource::~MateriaSource()
 {
-	std::cout << "MateriaSource destructor called" << std::endl;
 	for (int i = 0; i < MEMORY_SIZE; i++)
 		delete this->_memory[i];
 }
@@ -59,7 +56,8 @@ void	MateriaSource::learnMateria(AMateria* m)
 			return;
 		}
 	}
-	std::cout << RED << "Memory is full, can't learn new materias" << RESET << std::endl;
+	std::cout << RED << "Memory is full, can't learn new materias. Materia input will be deleted." << RESET << std::endl;
+	delete m;
 }
 
 AMateria*	MateriaSource::createMateria(std::string const& type)
@@ -69,6 +67,6 @@ AMateria*	MateriaSource::createMateria(std::string const& type)
 		if (this->_memory[i] && type.compare(this->_memory[i]->getType()) == 0) 
 			return this->_memory[i]->clone();
 	}
-	std::cout << RED << "Unkown type, cannot create materia" << RESET << std::endl;
+	std::cout << RED << type << " is an unkown type, failed to create materia" << RESET << std::endl;
 	return 0;
 }
