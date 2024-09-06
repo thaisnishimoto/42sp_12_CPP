@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:21:04 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/06 18:04:31 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/06 18:38:01 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 Character::Character()
 {
-	std::cout << "Character default constructor called " << std::endl;
 	for (int i = 0; i < SLOTS; i++)
 		this->_inventory[i] = NULL;
 	Character::_characterCount++;
@@ -22,7 +21,6 @@ Character::Character()
 
 Character::Character(std::string name) : _name(name)
 {
-	std::cout << "Character name param constructor called " << std::endl;
 	for (int i = 0; i < SLOTS; i++)
 		this->_inventory[i] = NULL;
 	Character::_characterCount++;
@@ -30,7 +28,6 @@ Character::Character(std::string name) : _name(name)
 
 Character::Character(const Character& src)
 {
-	std::cout << "Character copy constructor called " << std::endl;
 	for (int i = 0; i < SLOTS; i++)
 		this->_inventory[i] = NULL;
 	Character::_characterCount++;
@@ -55,7 +52,6 @@ Character&	Character::operator=(const Character& rhs)
 
 Character::~Character()
 {
-	std::cout << "Character destructor called " << std::endl;
 	for (int i = 0; i < SLOTS; i++)
 		delete this->_inventory[i];
 	Character::_characterCount--;
@@ -131,16 +127,20 @@ void	Character::dropOnFloor(AMateria* drop)
 
 void	Character::cleanFloor()
 {
+	bool	foundItems = false;
+
 	if (Character::_characterCount == 0)
 	{
 		for (int i = 0; i < FLOOR_SIZE; i++)
 		{
 			if (Character::_floor[i] != NULL)
 			{
+				foundItems = true; 
 				delete Character::_floor[i];
 				Character::_floor[i] = NULL;
 			}
 		}
-		std::cout << GREEN << "Floor has been cleaned" << RESET << std::endl;
+		if (foundItems)
+			std::cout << GREEN << "Floor has been cleaned" << RESET << std::endl;
 	}
 }
