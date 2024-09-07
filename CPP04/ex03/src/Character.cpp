@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 16:21:04 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/06 19:03:18 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/07 00:36:12 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,12 @@ void	Character::equip(AMateria* m)
 		if (this->_inventory[i] == NULL)
 		{
 			this->_inventory[i] = m;
-			std::cout << GREEN << m->getType() 
-				  << " was successfully added to inventory"
-				  << RESET << std::endl;
+			std::cout <<  m->getType()
+				  << " was successfully added to inventory" << std::endl;
 			return ;
 		}
 	}
-	std::cout << RED << this->_name << "`s inventory is full. Materia input will be deleted" << RESET << std::endl;
+	std::cout << RED << this->_name << "`s inventory is full. Materia input will be deleted." << RESET << std::endl;
 	delete m;
 }
 
@@ -115,9 +114,8 @@ void	Character::dropOnFloor(AMateria* drop)
 		if (Character::_floor[i] == NULL)
 		{
 			Character::_floor[i] = drop;
-			std::cout << GREEN << drop->getType() 
-				  << " was dropped on the floor"
-				  << RESET << std::endl;
+			std::cout << drop->getType()
+				  << " was dropped on the floor" << std::endl;
 			return ;
 		}
 	}
@@ -142,6 +140,6 @@ void	Character::cleanFloor()
 			}
 		}
 		if (foundItems)
-			std::cout << GREEN << "Floor has been cleaned" << RESET << std::endl;
+			std::cout << "Floor has been cleaned" << std::endl;
 	}
 }
