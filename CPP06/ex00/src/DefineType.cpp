@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 12:50:54 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/24 16:21:53 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/24 18:59:16 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ bool	isChar(const std::string& literal)
 bool	isInt(const std::string& literal)
 {
 	std::istringstream	iss(literal);
-
 	int	number;
+
 	iss >> number;
 	if (iss.fail() || !iss.eof())
 		return false;
@@ -64,8 +64,10 @@ bool	isInt(const std::string& literal)
 
 bool	isFloat(const std::string& literal)
 {
-	std::istringstream	iss(literal);
+	if (literal.find(".") == std::string::npos)
+		return false;
 
+	std::istringstream	iss(literal);
 	float	number;
 	iss >> number;
 	if (iss.fail() || iss.eof())
@@ -80,8 +82,10 @@ bool	isFloat(const std::string& literal)
 
 bool	isDouble(const std::string& literal)
 {
-	std::istringstream	iss(literal);
+	if (literal.find(".") == std::string::npos)
+		return false;
 
+	std::istringstream	iss(literal);
 	double	number;
 	iss >> number;
 	if (iss.fail() || !iss.eof())

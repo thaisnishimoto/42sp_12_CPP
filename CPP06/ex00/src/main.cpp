@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:50:09 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/24 18:12:02 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/24 19:00:01 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ int	main()
 	std::cout << std::endl;
 	ScalarConverter::converter("-2147483648"); //int_min
 	std::cout << std::endl;
-	std::cout << std::endl;
 	ScalarConverter::converter("2147483648"); //int_max + 1
 	std::cout << std::endl;
 	ScalarConverter::converter("-2147483649"); //int_min - 1
@@ -95,4 +94,3 @@ int	main()
 	}
 	return 0;
 }
-
