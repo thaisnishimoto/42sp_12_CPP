@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:50:09 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/24 11:20:27 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/24 12:12:06 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,40 +18,40 @@ int	main()
 	{
 	std::cout << YELLOW << "TEST 1. DEFINE TYPES" << RESET << std::endl;
 	std::cout << std::boolalpha;
-	std::cout << "_isChar(\"c\"): " << _isChar("c") << std::endl;    // true
-	std::cout << "_isChar(\"a\"): " << _isChar("a") << std::endl; // true
-	std::cout << "_isChar(\" \"): " << _isChar(" ") << std::endl;    // true
-	std::cout << "_isChar(\"0\"): " << _isChar("0") << std::endl; // false
-	std::cout << "_isChar(\"\\n\"): " << _isChar("\n") << std::endl;        // false
-	std::cout << "_isChar(\"abc\"): " << _isChar("abc") << std::endl;        // false
+	std::cout << "isChar(\"c\"): " << isChar("c") << std::endl;    // true
+	std::cout << "isChar(\"a\"): " << isChar("a") << std::endl; // true
+	std::cout << "isChar(\" \"): " << isChar(" ") << std::endl;    // true
+	std::cout << "isChar(\"0\"): " << isChar("0") << std::endl; // false
+	std::cout << "isChar(\"\\n\"): " << isChar("\n") << std::endl;        // false
+	std::cout << "isChar(\"abc\"): " << isChar("abc") << std::endl;        // false
 	
 	std::cout << std::endl;
-	std::cout << "_isInt(\"0\"): " << _isInt("0") << std::endl;    // true
-	std::cout << "_isInt(\"-42\"): " << _isInt("-42") << std::endl; // true
-	std::cout << "_isInt(\"42\"): " << _isInt("42") << std::endl;    // true
-	std::cout << "_isInt(\"+42\"): " << _isInt("+42") << std::endl; // true 
-	std::cout << "_isInt(\"42.42f\"): " << _isInt("42.42f") << std::endl;    // false
-	std::cout << "_isInt(\"42.42\"): " << _isInt("42.42") << std::endl;    // false
-	std::cout << "_isInt(\"abc\"): " << _isInt("abc") << std::endl;        // false
+	std::cout << "isInt(\"0\"): " << isInt("0") << std::endl;    // true
+	std::cout << "isInt(\"-42\"): " << isInt("-42") << std::endl; // true
+	std::cout << "isInt(\"42\"): " << isInt("42") << std::endl;    // true
+	std::cout << "isInt(\"+42\"): " << isInt("+42") << std::endl; // true 
+	std::cout << "isInt(\"42.42f\"): " << isInt("42.42f") << std::endl;    // false
+	std::cout << "isInt(\"42.42\"): " << isInt("42.42") << std::endl;    // false
+	std::cout << "isInt(\"abc\"): " << isInt("abc") << std::endl;        // false
 	
 	std::cout << std::endl;
-	std::cout << "_isFloat(\"42.0f\"): " << _isFloat("42.0f") << std::endl;    // true
-	std::cout << "_isFloat(\"-42.42f\"): " << _isFloat("-42.42f") << std::endl; // true
-	std::cout << "_isFloat(\"-42.42f\"): " << _isFloat("+42.42f") << std::endl; // true
-	std::cout << "_isFloat(\"42.42\"): " << _isFloat("42.42") << std::endl;    // false
-	std::cout << "_isFloat(\"4.2.0f\"): " << _isFloat("4.2.0f") << std::endl;    // false
-	std::cout << "_isFloat(\"42.42f2\"): " << _isFloat("42.42f2") << std::endl; // false
-	std::cout << "_isFloat(\"42.42ff\"): " << _isFloat("42.42ff") << std::endl; // false
-	std::cout << "_isFloat(\"abc\"): " << _isFloat("abc") << std::endl;        // false
+	std::cout << "isFloat(\"42.0f\"): " << isFloat("42.0f") << std::endl;    // true
+	std::cout << "isFloat(\"-42.42f\"): " << isFloat("-42.42f") << std::endl; // true
+	std::cout << "isFloat(\"-42.42f\"): " << isFloat("+42.42f") << std::endl; // true
+	std::cout << "isFloat(\"42.42\"): " << isFloat("42.42") << std::endl;    // false
+	std::cout << "isFloat(\"4.2.0f\"): " << isFloat("4.2.0f") << std::endl;    // false
+	std::cout << "isFloat(\"42.42f2\"): " << isFloat("42.42f2") << std::endl; // false
+	std::cout << "isFloat(\"42.42ff\"): " << isFloat("42.42ff") << std::endl; // false
+	std::cout << "isFloat(\"abc\"): " << isFloat("abc") << std::endl;        // false
 	
 	std::cout << std::endl;
-	std::cout << "_isDouble(\"42.42\"): " << _isDouble("42.42") << std::endl;    // true
-	std::cout << "_isDouble(\"-42.42\"): " << _isDouble("-42.42") << std::endl;    // true
-	std::cout << "_isDouble(\"+42.42\"): " << _isDouble("+42.42") << std::endl;    // true
-	std::cout << "_isDouble(\"42.000\"): " << _isDouble("42.000") << std::endl;    // true
-	std::cout << "_isDouble(\"42.0f\"): " << _isDouble("42.0f") << std::endl;    // false
-	std::cout << "_isDouble(\"-42.42f\"): " << _isDouble("-42.42f") << std::endl; // false
-	std::cout << "_isDouble(\"abc\"): " << _isDouble("abc") << std::endl;        // false
+	std::cout << "isDouble(\"42.42\"): " << isDouble("42.42") << std::endl;    // true
+	std::cout << "isDouble(\"-42.42\"): " << isDouble("-42.42") << std::endl;    // true
+	std::cout << "isDouble(\"+42.42\"): " << isDouble("+42.42") << std::endl;    // true
+	std::cout << "isDouble(\"42.000\"): " << isDouble("42.000") << std::endl;    // true
+	std::cout << "isDouble(\"42.0f\"): " << isDouble("42.0f") << std::endl;    // false
+	std::cout << "isDouble(\"-42.42f\"): " << isDouble("-42.42f") << std::endl; // false
+	std::cout << "isDouble(\"abc\"): " << isDouble("abc") << std::endl;        // false
 	}
 	return 0;
 }

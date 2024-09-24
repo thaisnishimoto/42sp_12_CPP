@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 12:45:12 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/23 17:23:03 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/24 11:56:36 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,21 @@
 # include <sstream>
 # include <cctype> //isprint
 
-bool	_isChar(const std::string& literal);
-bool	_isInt(const std::string& literal);
-bool	_isFloat(const std::string& literal);
-bool	_isDouble(const std::string& literal);
+typedef	enum	Type
+{
+	CHAR,
+	INT,
+	FLOAT,
+	DOUBLE,
+	PSEUDO_LITERAL,
+	UNKNOWN
+};
+
+Type	defineType(const std::string& literal);
+bool	isPseudoLiteral(const std::string& literal);
+bool	isChar(const std::string& literal);
+bool	isInt(const std::string& literal);
+bool	isFloat(const std::string& literal);
+bool	isDouble(const std::string& literal);
 
 #endif

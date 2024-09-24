@@ -6,13 +6,37 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 12:50:54 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/24 10:43:35 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/24 11:57:25 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DefineType.hpp"
 
-bool	_isChar(const std::string& literal)
+Type	defineType(const std::string& literal)
+{
+	if (isPseudoLiteral(literal))
+		return PSEUDO;
+	if (isChar(literal))
+		return CHAR;
+	if (isInt(literal))
+		return INT;
+	if (isFloat(literal))
+		return FLOAT;
+	if (isDouble(literal))
+		return DOUBLE;
+	return UNKNOWN;
+}
+
+bool	isPseudoLiteral(const std::string& literal)
+{
+	if (literal == "+inf" || literal == "-inf" || literal == "nan")
+		return true;
+	if (literal == "+inff" || literal == "-inff" || literal == "nanf")
+		return true;
+	return false;
+}
+
+bool	isChar(const std::string& literal)
 {
 	if (literal.length() != 1)
 		return false;
@@ -27,7 +51,7 @@ bool	_isChar(const std::string& literal)
 	return false;
 }
 
-bool	_isInt(const std::string& literal)
+bool	isInt(const std::string& literal)
 {
 	std::istringstream	iss(literal);
 
@@ -38,7 +62,7 @@ bool	_isInt(const std::string& literal)
 	return true;
 }
 
-bool	_isFloat(const std::string& literal)
+bool	isFloat(const std::string& literal)
 {
 	std::istringstream	iss(literal);
 
@@ -54,7 +78,7 @@ bool	_isFloat(const std::string& literal)
 	return true;
 }
 
-bool	_isDouble(const std::string& literal)
+bool	isDouble(const std::string& literal)
 {
 	std::istringstream	iss(literal);
 
