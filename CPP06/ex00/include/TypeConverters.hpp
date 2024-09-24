@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:50:39 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/24 16:02:00 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/24 18:09:55 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <string>
 # include <iostream>
+# include <sstream>
 
 void	convertChar(const std::string& literal);
 void	convertInt(const std::string& literal);

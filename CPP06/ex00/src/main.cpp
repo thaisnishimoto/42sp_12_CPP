@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:50:09 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/24 16:18:28 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/24 18:12:02 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,10 @@ int	main()
 	std::cout << "isInt(\"-42\"): " << isInt("-42") << std::endl; // true
 	std::cout << "isInt(\"42\"): " << isInt("42") << std::endl;    // true
 	std::cout << "isInt(\"+42\"): " << isInt("+42") << std::endl; // true 
+	std::cout << "isInt(\"2147483647\"): " << isInt("2147483647") << std::endl; // true 
+	std::cout << "isInt(\"-2147483648\"): " << isInt("-2147483648") << std::endl; // true 
+	std::cout << "isInt(\"2147483648\"): " << isInt("2147483648") << std::endl; // false 
+	std::cout << "isInt(\"-2147483649\"): " << isInt("-2147483649") << std::endl; // false 
 	std::cout << "isInt(\"42.42f\"): " << isInt("42.42f") << std::endl;    // false
 	std::cout << "isInt(\"42.42\"): " << isInt("42.42") << std::endl;    // false
 	std::cout << "isInt(\"abc\"): " << isInt("abc") << std::endl;        // false
@@ -64,6 +68,29 @@ int	main()
 	ScalarConverter::converter(" ");
 	std::cout << std::endl;
 	ScalarConverter::converter("\n");
+	std::cout << std::endl;
+	}
+	{
+	std::cout << std::endl;
+	std::cout << YELLOW << "TEST 3. CONVERT INT" << RESET << std::endl;
+	ScalarConverter::converter("0");
+	std::cout << std::endl;
+	ScalarConverter::converter("-42");
+	std::cout << std::endl;
+	ScalarConverter::converter("42");
+	std::cout << std::endl;
+	ScalarConverter::converter("255");
+	std::cout << std::endl;
+	ScalarConverter::converter("-128");
+	std::cout << std::endl;
+	ScalarConverter::converter("2147483647"); //int_max
+	std::cout << std::endl;
+	ScalarConverter::converter("-2147483648"); //int_min
+	std::cout << std::endl;
+	std::cout << std::endl;
+	ScalarConverter::converter("2147483648"); //int_max + 1
+	std::cout << std::endl;
+	ScalarConverter::converter("-2147483649"); //int_min - 1
 	std::cout << std::endl;
 	}
 	return 0;
