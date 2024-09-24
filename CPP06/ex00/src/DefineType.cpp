@@ -6,16 +6,14 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 12:50:54 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/24 11:57:25 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:21:53 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DefineType.hpp"
 
-Type	defineType(const std::string& literal)
+LiteralType	defineType(const std::string& literal)
 {
-	if (isPseudoLiteral(literal))
-		return PSEUDO;
 	if (isChar(literal))
 		return CHAR;
 	if (isInt(literal))
@@ -24,6 +22,8 @@ Type	defineType(const std::string& literal)
 		return FLOAT;
 	if (isDouble(literal))
 		return DOUBLE;
+	if (isPseudoLiteral(literal))
+		return PSEUDO_LITERAL;
 	return UNKNOWN;
 }
 

@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 12:45:12 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/24 11:56:36 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/24 16:08:04 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <sstream>
 # include <cctype> //isprint
 
-typedef	enum	Type
+enum	LiteralType
 {
 	CHAR,
 	INT,
@@ -28,7 +28,7 @@ typedef	enum	Type
 	UNKNOWN
 };
 
-Type	defineType(const std::string& literal);
+LiteralType	defineType(const std::string& literal);
 bool	isPseudoLiteral(const std::string& literal);
 bool	isChar(const std::string& literal);
 bool	isInt(const std::string& literal);
