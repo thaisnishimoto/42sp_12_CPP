@@ -12,7 +12,7 @@ HEADER_PATH = ./include
 
 #================================FILES=========================================#
 
-NAME = bureaucrat
+NAME = converter 
 SRC = $(wildcard $(SRC_PATH)/*.cpp)
 OBJ = $(SRC:.cpp=.o)
 HEADER = $(wildcard $(HEADER_PATH)/*.hpp)

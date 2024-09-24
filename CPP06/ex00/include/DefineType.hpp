@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   DefineType.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 12:45:12 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/23 16:22:09 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/23 17:23:03 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALAR_CONVERTER_HPP
-# define SCALAR_CONVERTER_HPP
+#ifndef DEFINE_TYPE_HPP 
+# define DEFINE_TYPE_HPP
 
-# include <string>
 # include <iostream>
+# include <string>
+# include <sstream>
+# include <cctype> //isprint
 
-class	ScalarConverter {
-
-public:
-	virtual ~ScalarConverter();
-	static void	converter(const std::string& literal);
-
-private:
-	ScalarConverter();
-	ScalarConverter(const ScalarConverter& src);
-	ScalarConverter&	operator=(const ScalarConverter& rhs);
-};
+bool	_isChar(const std::string& literal);
+bool	_isInt(const std::string& literal);
+bool	_isFloat(const std::string& literal);
+bool	_isDouble(const std::string& literal);
 
 #endif
