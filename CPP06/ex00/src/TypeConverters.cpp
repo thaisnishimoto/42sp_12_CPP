@@ -6,12 +6,32 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:51:02 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/24 18:01:24 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/25 15:59:04 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "TypeConverters.hpp"
 
+//Display functions that check for overflow
+void	safeDisplayChar(char c, double d)
+{
+	if (d < std::numeric_limits<char>::min() || d > std::numeric_limits<char>::max()) 
+		std::cout << "char: impossible" << std::endl;
+	else if (std::isprint(c))
+		std::cout << "char: '" << c << "'" << std::endl;
+	else
+		std::cout << "char: Non displayable" << std::endl;
+}
+
+void	safeDisplayInt(int num, double d)
+{
+	if (d < std::numeric_limits<int>::min() || d > std::numeric_limits<int>::max()) 
+		std::cout << "int: impossible" << std::endl;
+	else
+		std::cout << "int: " << num << std::endl;
+}
+
+//Convert functions
 void	convertChar(const std::string& literal)
 {
 	std::cout << "char: '" << literal[0] << "'" << std::endl;
@@ -26,29 +46,24 @@ void	convertInt(const std::string& literal)
 	int	num;
 	iss >> num;
 
-	if (num >= 0 && num <= 127) //ascii range
-	{
-		char	c = static_cast<char>(num);
-		if (std::isprint(c))
-			std::cout << "char: '" << c << "'" << std::endl;
-		else
-			std::cout << "char: Non displayable" << std::endl;
-	}
-	else
-		std::cout << "char: impossible" << std::endl;
-
+	safeDisplayChar(static_cast<char>(num), static_cast<double>(num));
 	std::cout << "int: " << num << std::endl;
-	std::cout << "float: " << static_cast<float>(num) << ".0f" << std::endl;
-	std::cout << "double: " << static_cast<double>(num) << ".0" << std::endl;
+	std::cout << std::fixed << std::setprecision(1); 
+	std::cout << "float: " << static_cast<float>(num) << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(num) << std::endl;
 }
 
 void	convertFloat(const std::string& literal)
 {
-	(void)literal;
-//	std::cout << "char: " << << std::endl;
-//	std::cout << "int: " << << std::endl;
-//	std::cout << "float: " << << std::endl;
-//	std::cout << "double: " << << std::endl;
+	std::istringstream	iss(literal);
+	float	num;
+	iss >> num;
+
+	safeDisplayChar(static_cast<char>(num), static_cast<double>(num));
+	safeDisplayInt(static_cast<int>(num), static_cast<double>(num));
+	std::cout << std::fixed << std::setprecision(1); 
+	std::cout << "float: " << num << "f" << std::endl;
+	std::cout << "double: " << static_cast<double>(num) << std::endl;
 }
 
 void	convertDouble(const std::string& literal)
