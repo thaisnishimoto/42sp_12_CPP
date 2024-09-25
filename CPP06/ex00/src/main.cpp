@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:50:09 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/25 14:54:25 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:21:56 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,22 @@ int	main()
 	ScalarConverter::converter("-2147483649.0f"); //int_min - 1
 	std::cout << std::endl;
 	ScalarConverter::converter("0.0000000001f"); 
+	std::cout << std::endl;
+	}
+	{
+	std::cout << std::endl;
+	std::cout << YELLOW << "TEST 6. CONVERT PSEUDO LITERALS" << RESET << std::endl;
+	ScalarConverter::converter("+inff");
+	std::cout << std::endl;
+	ScalarConverter::converter("+inf");
+	std::cout << std::endl;
+	ScalarConverter::converter("-inff");
+	std::cout << std::endl;
+	ScalarConverter::converter("-inf");
+	std::cout << std::endl;
+	ScalarConverter::converter("nanf");
+	std::cout << std::endl;
+	ScalarConverter::converter("nan");
 	std::cout << std::endl;
 	}
 	return 0;

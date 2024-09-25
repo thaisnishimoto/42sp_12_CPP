@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:51:02 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/25 15:59:04 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/25 16:22:15 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,21 @@ void	convertDouble(const std::string& literal)
 
 void	convertPseudoLiteral(const std::string& literal)
 {
-	(void)literal;
-//	std::cout << "char: " << << std::endl;
-//	std::cout << "int: " << << std::endl;
-//	std::cout << "float: " << << std::endl;
-//	std::cout << "double: " << << std::endl;
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	if (literal == "+inff" || literal == "+inf")
+	{
+		std::cout << "float: +inff" << std::endl;
+		std::cout << "double: +inf" << std::endl;
+	}
+	else if (literal == "-inff" || literal == "-inf")
+	{
+		std::cout << "float: -inff" << std::endl;
+		std::cout << "double: -inf" << std::endl;
+	}
+	else
+	{
+		std::cout << "float: nanf" << std::endl;
+		std::cout << "double: nan" << std::endl;
+	}
 }
