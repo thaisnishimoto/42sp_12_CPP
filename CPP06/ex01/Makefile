@@ -12,7 +12,7 @@ HEADER_PATH = ./include
 
 #================================FILES=========================================#
 
-NAME = convert 
+NAME = serialization 
 TEST_NAME = run_tests
 SRC = $(wildcard $(SRC_PATH)/*.cpp)
 OBJ = $(SRC:.cpp=.o)
