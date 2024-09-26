@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 15:51:02 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/25 16:22:15 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/25 23:24:33 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,14 @@ void	safeDisplayInt(int num, double d)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << num << std::endl;
+}
+
+void	safeDisplayFloat(float num, double d)
+{
+	if (d < -std::numeric_limits<float>::max() || d > std::numeric_limits<float>::max()) 
+		std::cout << "float: impossible" << std::endl;
+	else
+		std::cout << std::fixed << std::setprecision(1) << "float: " << num  << "f" << std::endl;
 }
 
 //Convert functions
@@ -68,11 +76,15 @@ void	convertFloat(const std::string& literal)
 
 void	convertDouble(const std::string& literal)
 {
-	(void)literal;
-//	std::cout << "char: " << << std::endl;
-//	std::cout << "int: " << << std::endl;
-//	std::cout << "float: " << << std::endl;
-//	std::cout << "double: " << << std::endl;
+	std::istringstream	iss(literal);
+	double	num;
+	iss >> num;
+
+	safeDisplayChar(static_cast<char>(num), num);
+	safeDisplayInt(static_cast<int>(num), num);
+	safeDisplayFloat(static_cast<float>(num), num);
+	std::cout << std::fixed << std::setprecision(1); 
+	std::cout << "double: " << num << std::endl;
 }
 
 void	convertPseudoLiteral(const std::string& literal)

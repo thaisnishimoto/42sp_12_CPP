@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 17:50:09 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/25 16:21:56 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/26 00:31:39 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,28 @@ int	main()
 	ScalarConverter::converter("-2147483649.0f"); //int_min - 1
 	std::cout << std::endl;
 	ScalarConverter::converter("0.0000000001f"); 
+	std::cout << std::endl;
+	}
+	{
+	std::cout << std::endl;
+	std::cout << YELLOW << "TEST 5. CONVERT DOUBLE" << RESET << std::endl;
+	ScalarConverter::converter("0.0");
+	std::cout << std::endl;
+	ScalarConverter::converter("-0.0");
+	std::cout << std::endl;
+	ScalarConverter::converter("-4.2");
+	std::cout << std::endl;
+	ScalarConverter::converter("4.2");
+	std::cout << std::endl;
+	ScalarConverter::converter("42.0");
+	std::cout << std::endl;
+	ScalarConverter::converter("35000000000.0"); //35 billion should overflow int
+	std::cout << std::endl;
+	ScalarConverter::converter("2147483648.0"); //int_max + 1
+	std::cout << std::endl;
+	ScalarConverter::converter("-2147483649.0"); //int_min - 1
+	std::cout << std::endl;
+	ScalarConverter::converter("350000000000000000000000000000000000000.0"); //float overflow
 	std::cout << std::endl;
 	}
 	{

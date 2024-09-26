@@ -13,6 +13,7 @@ HEADER_PATH = ./include
 #================================FILES=========================================#
 
 NAME = convert 
+TEST_NAME = run_tests
 SRC = $(wildcard $(SRC_PATH)/*.cpp)
 OBJ = $(SRC:.cpp=.o)
 HEADER = $(wildcard $(HEADER_PATH)/*.hpp)
