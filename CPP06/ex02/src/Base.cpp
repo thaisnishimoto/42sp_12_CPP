@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 12:19:15 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/28 00:14:55 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/28 00:28:10 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ Base*	generate(void)
 
 void	identify(Base* p)
 {
+	std::cout << "Actual type pointed to: ";
 	A*	aPtr = dynamic_cast<A*>(p);
 	if (aPtr != NULL)
 	{
@@ -103,6 +104,7 @@ bool	isC(Base& p)
 
 void	identify(Base& p)
 {
+	std::cout << "Actual type referenced: ";
 	if (isA(p))
 		std::cout << "A" << std::endl;
 	else if (isB(p))
