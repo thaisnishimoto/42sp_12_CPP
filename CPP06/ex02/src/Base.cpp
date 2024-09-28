@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 12:19:15 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/27 18:21:37 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/28 00:01:06 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,15 @@ Base*	generate(void)
 {
 	int	random = (rand() % 3);
 
-	if (random == CLASS_A)
-		return new A();
-	else if (random == CLASS_B)
-		return new B();
-	else
-		return new C();
+	switch (random)
+	{
+		case CLASS_A:
+			return new A();
+		case CLASS_B:
+			return new B();
+		case CLASS_C:
+			return new C();
+	}
 }
 
 void	identify(Base* p)
@@ -57,51 +60,51 @@ void	identify(Base* p)
 	}
 }
 
-//bool	isA(Base& p)
-//{
-//	try
-//	{
-//		A& aRef = dynamic_cast<A&>(p);
-//		return true;
-//	}
-//	catch (const std::bad_cast& bc)
-//	{
-//		return false;
-//	}
-//}
+bool	isA(Base& p)
+{
+	try
+	{
+		(void)dynamic_cast<A&>(p);
+		return true;
+	}
+	catch (const std::exception& e)
+	{
+		return false;
+	}
+}
 
-//bool	isB(Base& p)
-//{
-//	try
-//	{
-//		B& bRef = dynamic_cast<B&>(p);
-//		return true;
-//	}
-//	catch (const std::bad_cast& bc)
-//	{
-//		return false;
-//	}
-//}
-//
-//bool	isC(Base& p)
-//{
-//	try
-//	{
-//		C& cRef = dynamic_cast<C&>(p);
-//		return true;
-//	}
-//	catch (const std::bad_cast& bc)
-//	{
-//		return false;
-//	}
-//}
+bool	isB(Base& p)
+{
+	try
+	{
+		(void)dynamic_cast<B&>(p);
+		return true;
+	}
+	catch (const std::exception& e)
+	{
+		return false;
+	}
+}
 
-//void	identify(Base& p)
-//{
-//	if (isA(p))
-//		std::cout << "A" << std::endl;
-//	else if (isB(p))
-//		std::cout << "B" << std::endl;
-//	else if (isC(p))
-//		std::cout << "C" << std::endl;
-//}
+bool	isC(Base& p)
+{
+	try
+	{
+		(void)dynamic_cast<C&>(p);
+		return true;
+	}
+	catch (const std::exception& e)
+	{
+		return false;
+	}
+}
+
+void	identify(Base& p)
+{
+	if (isA(p))
+		std::cout << "A" << std::endl;
+	else if (isB(p))
+		std::cout << "B" << std::endl;
+	else if (isC(p))
+		std::cout << "C" << std::endl;
+}
