@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 12:05:12 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/27 14:55:56 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/27 18:20:51 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 enum	classOptions {
 	CLASS_A,
-	CLASS_B
+	CLASS_B,
 	CLASS_C
 };
 
@@ -31,6 +31,6 @@ public:
 
 Base*	generate(void);
 void	identify(Base* p);
-void	identify(Base& p)
+void	identify(Base& p);
 
 #endif
