@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 14:54:56 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/27 23:58:15 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/28 00:11:58 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,20 @@ int	main()
 		identify(cRef);
 	}
 	{
-//		std::cout << std::endl;
-//		std::cout << YELLOW << "Identify each class by reference" << RESET << std::endl;
-//	//seed rand
-//	srand(time(NULL));
-//
-//	Base*	randomClass = generate();
+		std::cout << std::endl;
+		std::cout << YELLOW << "Identify random types" << RESET << std::endl;
+
+		//seed rand
+		srand(time(NULL));
+	
+		for (int i = 0; i < 6; i++)
+		{
+			Base*	randomClass = generate();
+			identify(randomClass);
+			identify(*randomClass);
+			delete randomClass;
+			std::cout << std::endl;
+		}
 	}
 	return 0;
 }

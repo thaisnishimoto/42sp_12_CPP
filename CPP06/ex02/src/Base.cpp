@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/27 12:19:15 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/09/28 00:01:06 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/09/28 00:14:55 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ Base*	generate(void)
 			return new B();
 		case CLASS_C:
 			return new C();
+		default:
+			return NULL;
 	}
 }
 
