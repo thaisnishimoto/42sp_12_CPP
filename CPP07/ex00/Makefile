@@ -12,7 +12,7 @@ HEADER_PATH = ./include
 
 #================================FILES=========================================#
 
-NAME = whatever 
+NAME = template 
 TEST_NAME = run_tests
 SRC = $(wildcard $(SRC_PATH)/*.cpp)
 OBJ = $(SRC:.cpp=.o)
