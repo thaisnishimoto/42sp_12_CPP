@@ -25,7 +25,7 @@ Array<T>::Array(const Array& src) : _elements(NULL), _size(src._size)
 	if (src._elements)
 	{
 		_elements = new T[_size];
-		for (int i = 0; i < _size; i++)
+		for (unsigned int i = 0; i < _size; i++)
 			_elements[i] = src._elements[i];
 	}
 }
@@ -33,12 +33,13 @@ Array<T>::Array(const Array& src) : _elements(NULL), _size(src._size)
 template <typename T>
 Array<T>&	Array<T>::operator=(const Array<T>& rhs)
 {
+	std::cout << "Assignment operator called" << std::endl;
 	if (this != &rhs)
 	{
 		delete [] _elements;
 		_size = rhs._size;
 		_elements = new T[_size];
-		for (int i = 0; i < _size; i++)
+		for (unsigned int i = 0; i < _size; i++)
 			_elements[i] = rhs._elements[i];
 	}
 	return *this;
@@ -47,7 +48,7 @@ Array<T>&	Array<T>::operator=(const Array<T>& rhs)
 template <typename T>
 Array<T>::~Array()
 {
-	std::cout << "Default destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 	delete [] _elements;
 }
 
