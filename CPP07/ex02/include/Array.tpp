@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Array.tpp                                          :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/01 17:47:50 by tmina-ni          #+#    #+#              #
-#    Updated: 2024/10/02 00:39:20 by tmina-ni         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 #ifndef ARRAY_TPP
 #define ARRAY_TPP
 
@@ -43,7 +31,7 @@ Array<T>::Array(const Array& src) : _elements(NULL), _size(src._size)
 }
 
 template <typename T>
-Array&	Array<T>::operator=(const Array& rhs)
+Array<T>&	Array<T>::operator=(const Array<T>& rhs)
 {
 	if (this != &rhs)
 	{
@@ -51,7 +39,7 @@ Array&	Array<T>::operator=(const Array& rhs)
 		_size = rhs._size;
 		_elements = new T[_size];
 		for (int i = 0; i < _size; i++)
-			_elements[i] = src._elements[i];
+			_elements[i] = rhs._elements[i];
 	}
 	return *this;
 }
@@ -73,7 +61,7 @@ template <typename T>
 T&	Array<T>::operator[](unsigned int i)
 {
 	if (i >= _size)
-		throw std::out_of_bounds("Index is out of bounds"); 
+		throw std::out_of_range("Index is out of bounds"); 
 	return _elements[i];
 }
 
@@ -81,7 +69,7 @@ template <typename T>
 const T&	Array<T>::operator[](unsigned int i) const
 {
 	if (i >= _size)
-		throw std::out_of_bounds("Index is out of bounds"); 
+		throw std::out_of_range("Index is out of bounds"); 
 	return _elements[i];
 }
 

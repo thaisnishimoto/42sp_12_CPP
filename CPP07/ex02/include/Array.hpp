@@ -6,12 +6,15 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 16:34:15 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/10/02 00:40:28 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/10/06 23:35:15 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ARRAY_HPP
 #define ARRAY_HPP
+
+#define RESET   "\033[0m"
+#define YELLOW  "\033[33m"
 
 template <typename T>
 class	Array {
