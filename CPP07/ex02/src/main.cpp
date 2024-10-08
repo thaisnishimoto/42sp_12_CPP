@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:34:40 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/10/07 16:53:44 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/10/08 00:38:23 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,16 @@ int	main(void)
 	std::cout << "*Check if original changed*" << std::endl;
 	for (unsigned int i = 0; i < orig_array.size(); i++)
 		std::cout << "'" << orig_array[i] << "'" << std::endl;
+	}
+	{
+	std::cout << std::endl;
+	std::cout << YELLOW << "TEST 7. Accessing index out of bound" << RESET << std::endl;
+	const Array<float>	array(3);
+	try {
+		std::cout << array[3] << std::endl;
+	} catch (const std::exception& e) {
+		std::cout << "Caught exception: " << e.what() << std::endl;
+	}
 	}
 	return 0;
 }
