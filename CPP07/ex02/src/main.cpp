@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:34:40 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/10/08 00:38:23 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/10/08 00:49:56 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	main(void)
 	std::cout << std::endl;
 	std::cout << YELLOW << "TEST 6. Assignment operator" << RESET << std::endl;
 	Array<char>	orig_array(3);
-	Array<char>	assign_array;;
+	Array<char>	assign_array;
 	assign_array = orig_array;
 	std::cout << "*Change assign array*" << std::endl;
 	for (unsigned int i = 0; i < assign_array.size(); i++)
