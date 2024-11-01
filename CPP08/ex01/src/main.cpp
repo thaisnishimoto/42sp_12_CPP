@@ -6,11 +6,11 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:34:40 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/10/31 17:26:02 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/11/01 17:38:23 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.hpp"
+#include "Scan.hpp"
 #include <iostream>
 #include <vector>
 #include <list>
