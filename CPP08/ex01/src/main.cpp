@@ -6,59 +6,58 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 10:34:40 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/11/01 17:38:23 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/11/04 00:21:23 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Scan.hpp"
-#include <iostream>
-#include <vector>
-#include <list>
-#include <deque>
+#include "Span.hpp"
 
 int	main(void)
 {
-	int	arr[] = {1, 2, 3, 4, 5};
-
-	std::cout << YELLOW << "Test 1. Vector container" << RESET << std::endl;
-	std::vector<int>	int_vec(arr, arr + 5);
-	try {
-		std::vector<int>::iterator	it;
-		it = easyfind(int_vec, 1);
-		std::cout << "Found value: " << *it << std::endl;
-
-		it = easyfind(int_vec, 0);
-		std::cout << "Found value: " << *it << std::endl;
-	} catch (const std::exception& e) {
-		std::cerr << "Caught expection: " << e.what() << std::endl;
+	{
+	std::cout << YELLOW << "Test 1. PDF" << RESET << std::endl;
+		Span sp = Span(5);
+	
+		sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
+	
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
 	}
-
+	{
 	std::cout << std::endl;
-	std::cout << YELLOW << "Test 2. List container" << RESET << std::endl;
-	std::list<int>	int_lst(arr, arr + 5);
-	try {
-		std::list<int>::iterator	it;
-		it = easyfind(int_lst, 2);
-		std::cout << "Found value: " << *it << std::endl;
-
-		it = easyfind(int_lst, -2);
-		std::cout << "Found value: " << *it << std::endl;
-	} catch (const std::exception& e) {
-		std::cerr << "Caught expection: " << e.what() << std::endl;
+	std::cout << YELLOW << "Test 2. addNumber exception" << RESET << std::endl;
+		Span sp = Span(1);
+		try {
+			sp.addNumber(6);
+			sp.addNumber(3);
+		} catch (std::exception& e) {
+			std::cerr << "Error: " << e.what() << std::endl;
+		}
 	}
-
+	{
 	std::cout << std::endl;
-	std::cout << YELLOW << "Test 3. Deque container" << RESET << std::endl;
-	std::deque<int>	int_deq(arr, arr + 5);
-	try {
-		std::deque<int>::iterator	it;
-		it = easyfind(int_deq, 3);
-		std::cout << "Found value: " << *it << std::endl;
-
-		it = easyfind(int_deq, 6);
-		std::cout << "Found value: " << *it << std::endl;
-	} catch (const std::exception& e) {
-		std::cerr << "Caught expection: " << e.what() << std::endl;
+	std::cout << YELLOW << "Test 3. Shortest Span exception" << RESET << std::endl;
+		Span sp = Span(1);
+		try {
+			sp.addNumber(6);
+			std::cout << sp.shortestSpan() << std::endl;
+		} catch (std::exception& e) {
+			std::cerr << "Error: " << e.what() << std::endl;
+		}
+	}
+	{
+	std::cout << std::endl;
+	std::cout << YELLOW << "Test 4. Longest Span exception" << RESET << std::endl;
+		Span sp = Span(1);
+		try {
+			std::cout << sp.longestSpan() << std::endl;
+		} catch (std::exception& e) {
+			std::cerr << "Error: " << e.what() << std::endl;
+		}
 	}
 	return 0;
 }
