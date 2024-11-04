@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:22:06 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/11/01 18:44:23 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/11/04 00:13:54 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 
 #include <iostream>
 #include <vector>
-#include <exception>
+#include <algorithm> //sort
+#include <stdexcept> //out_of_range, logic_error
+
+#define RESET   "\033[0m"
+#define YELLOW  "\033[33m"
 
 class	Span {
 public:
@@ -25,13 +29,13 @@ public:
 	~Span();
 
 	void	addNumber(int number);
-	int	shortestSpan();
-	int	longestSpan();
+	int	shortestSpan() const;
+	int	longestSpan() const;
 
 private:
 	Span();
-	unsigned int	N;
-	std::vector<int>	span_vec;
-}
+	unsigned int	_maxSize;
+	std::vector<int>	_numbers;
+};
 
 #endif
