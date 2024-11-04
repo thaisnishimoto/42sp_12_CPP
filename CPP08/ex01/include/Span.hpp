@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:22:06 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/11/04 00:13:54 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:05:53 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm> //sort
-#include <stdexcept> //out_of_range, logic_error
+#include <stdexcept> //lenght_error, logic_error
 
 #define RESET   "\033[0m"
 #define YELLOW  "\033[33m"
@@ -31,6 +31,14 @@ public:
 	void	addNumber(int number);
 	int	shortestSpan() const;
 	int	longestSpan() const;
+
+	template <typename Iterator>
+	void	addNumbersRange(Iterator begin, Iterator end)
+	{
+		if (std::distance(begin, end) + _numbers.size() > _maxSize)
+			throw std::length_error("Adding range would exceed Span's max size");
+		_numbers.insert(_numbers.end(), begin, end);
+	}
 
 private:
 	Span();

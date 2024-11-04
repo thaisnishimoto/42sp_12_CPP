@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 17:38:42 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/11/04 00:35:07 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/11/04 15:04:42 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ Span::~Span()
 void	Span::addNumber(int number)
 {
 	if (_numbers.size() >= _maxSize)
-		throw std::out_of_range("Span is full");
+		throw std::length_error("Span is full");
 	_numbers.push_back(number);
 }
 
@@ -60,7 +60,6 @@ int	Span::shortestSpan() const
 		int	newSpan = *(it + 1) - *it;
 		if (newSpan < shortestSpan)
 			shortestSpan = newSpan; 
-		std::cout << "Span: " << shortestSpan << std::endl;
 	}
 	return shortestSpan;
 }
