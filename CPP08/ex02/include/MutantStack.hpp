@@ -6,7 +6,7 @@
 /*   By: tmina-ni <thaismnishimoto@gmail.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 15:40:45 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/11/05 00:30:54 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:47:12 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 #define RESET   "\033[0m"
 #define YELLOW  "\033[33m"
 
+#include <iostream>
 #include <stack>
 
-template <typename T, typename Container = std::deque<T>>
-class	MutantStack : public std::stack<T> {
+template <typename T, typename Container = std::deque<T> >
+class	MutantStack : public std::stack<T, Container> {
 
 public:
 	MutantStack();
@@ -32,7 +33,7 @@ public:
 	iterator	end();
 
 	typedef typename std::stack<T, Container>::container_type::const_iterator	const_iterator;
-	const_iterator	begin()i const;
+	const_iterator	begin() const;
 	const_iterator	end() const;
 
 	typedef typename std::stack<T, Container>::container_type::reverse_iterator	reverse_iterator;
@@ -43,5 +44,7 @@ public:
 	const_reverse_iterator	rbegin() const;
 	const_reverse_iterator	rend() const;
 };
+
+#include "MutantStack.tpp"
 
 #endif
