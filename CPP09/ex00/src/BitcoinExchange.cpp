@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <BitcoinExchange.hpp>
-#include <fstream>
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -47,7 +46,7 @@ void BitcoinExchange::loadDB()
     std::getline(dbFile, line);
     if (line != "date,exchange_rate")
     {
-        throw std::runtime_error("Error: invalid header in data.csv");
+        throw std::runtime_error("Error: invalid header format in data.csv");
     }
 
     //load data into map container
@@ -61,12 +60,15 @@ void BitcoinExchange::loadDB()
         streamLine >> price;
         _btcPriceDB[date] = price;
     }
+}
 
-    std::map<std::string, float>::iterator  it = _btcPriceDB.begin();
-    std::map<std::string, float>::iterator  ite = _btcPriceDB.end();
-    while (it != ite)
-    {
-        std::cout << it->first << " --> " << it->second << std::endl;
-        ++it;
-    }
+void BitcoinExchange::processPrices(std::string inputFile)
+{
+    // std::map<std::string, float>::iterator  it = _btcPriceDB.begin();
+    // std::map<std::string, float>::iterator  ite = _btcPriceDB.end();
+    // while (it != ite)
+    // {
+    //     std::cout << it->first << " --> " << it->second << std::endl;
+    //     ++it;
+    // }
 }

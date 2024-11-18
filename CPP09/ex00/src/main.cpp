@@ -19,8 +19,13 @@ int	main(int argc, char *argv[])
 		std::cerr << "Error: could not open file." << std::endl;
 		return 1;
 	}
-	(void)argv;
 	BitcoinExchange	btcExchange;
-	btcExchange.loadDB();
+	try {
+		btcExchange.loadDB();
+		btcExchange.processPrices(argv[1]);
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+		return 1;
+	}
 	return 0;
 }

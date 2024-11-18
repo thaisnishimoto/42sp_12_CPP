@@ -16,6 +16,7 @@
 #include <map>
 #include <iostream>
 #include <string> //getline
+#include <fstream> //ifstream
 #include <sstream> //istringstream
 
 class    BitcoinExchange {
@@ -27,6 +28,7 @@ public:
     ~BitcoinExchange();
 
     void    loadDB(void);
+	void	processPrices(std::string inputFile);
 
 private:
     std::map<std::string, float>    _btcPriceDB;
