@@ -28,7 +28,8 @@ public:
     ~BitcoinExchange();
 
     void    loadDB(void);
-	void	processPrices(std::string filepath);
+	void	processInputFile(std::string filepath);
+    void    calculatePrice(std::string line);
 
 private:
     std::map<std::string, float>    _btcPriceDB;

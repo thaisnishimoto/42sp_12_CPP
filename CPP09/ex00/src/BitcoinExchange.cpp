@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <BitcoinExchange.hpp>
+#include <version>
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -37,15 +38,14 @@ void BitcoinExchange::loadDB()
 {
     std::ifstream   dbFile("data.csv");
     if (!dbFile.is_open())
-    {
         throw std::runtime_error("could not open data.csv");
-    }
 
     //Check db header
     std::string line;
     std::getline(dbFile, line);
     if (line != "date,exchange_rate")
     {
+        dbFile.close();
         throw std::runtime_error("invalid header format in data.csv");
     }
 
@@ -60,29 +60,46 @@ void BitcoinExchange::loadDB()
         streamLine >> price;
         _btcPriceDB[date] = price;
     }
+    dbFile.close();
 }
 
-void BitcoinExchange::processPrices(std::string filepath)
+void BitcoinExchange::processInputFile(std::string filepath)
 {
     std::ifstream   inputFile(filepath.c_str());
     if (!inputFile.is_open())
-    {
         throw std::runtime_error("could not open input file");
-    }
 
     //Check input file header
-    std::string line;
-    std::getline(inputFile, line);
-    if (line != "date | value")
+    std::string firstLine;
+    std::getline(inputFile, firstLine);
+    if (firstLine != "date | value")
     {
+        inputFile.close();
         throw std::runtime_error("invalid header format in input file");
     }
 
-    // std::map<std::string, float>::iterator  it = _btcPriceDB.begin();
-    // std::map<std::string, float>::iterator  ite = _btcPriceDB.end();
-    // while (it != ite)
+    std::string line;
+    while (std::getline(inputFile, line))
+        calculatePrice(line);
+
+    inputFile.close();
+}
+
+void BitcoinExchange::calculatePrice(std::string line)
+{
+    std::istringstream  streamLine(line);
+    std::string date;
+    char    delim;
+    double  value;
+    if (!(streamLine >> date >> delim >> value) || delim != '|')
+    {
+        std::cout << "Error: bad input => " << line << std::endl;
+        return;
+    }
+    // if (isValidDate(date) && isValidValue(value))
     // {
-    //     std::cout << it->first << " --> " << it->second << std::endl;
-    //     ++it;
+    //     float   rate =
+    //     std::cout << date << " => " << value * rate << std::endl;
     // }
+    return;
 }
