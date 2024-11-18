@@ -38,7 +38,7 @@ void BitcoinExchange::loadDB()
     std::ifstream   dbFile("data.csv");
     if (!dbFile.is_open())
     {
-        throw std::runtime_error("Error: could not open data.csv");
+        throw std::runtime_error("could not open data.csv");
     }
 
     //Check db header
@@ -46,7 +46,7 @@ void BitcoinExchange::loadDB()
     std::getline(dbFile, line);
     if (line != "date,exchange_rate")
     {
-        throw std::runtime_error("Error: invalid header format in data.csv");
+        throw std::runtime_error("invalid header format in data.csv");
     }
 
     //load data into map container
@@ -62,8 +62,22 @@ void BitcoinExchange::loadDB()
     }
 }
 
-void BitcoinExchange::processPrices(std::string inputFile)
+void BitcoinExchange::processPrices(std::string filepath)
 {
+    std::ifstream   inputFile(filepath.c_str());
+    if (!inputFile.is_open())
+    {
+        throw std::runtime_error("could not open input file");
+    }
+
+    //Check input file header
+    std::string line;
+    std::getline(inputFile, line);
+    if (line != "date | value")
+    {
+        throw std::runtime_error("invalid header format in input file");
+    }
+
     // std::map<std::string, float>::iterator  it = _btcPriceDB.begin();
     // std::map<std::string, float>::iterator  ite = _btcPriceDB.end();
     // while (it != ite)
