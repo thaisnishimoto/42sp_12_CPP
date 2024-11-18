@@ -30,6 +30,7 @@ public:
     void    loadDB(void);
 	void	processInputFile(std::string filepath);
     void    calculatePrice(std::string line);
+    bool    isValidValue(double value);
 
 private:
     std::map<std::string, float>    _btcPriceDB;

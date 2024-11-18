@@ -96,10 +96,27 @@ void BitcoinExchange::calculatePrice(std::string line)
         std::cout << "Error: bad input => " << line << std::endl;
         return;
     }
+    if (isValidValue(value))
+        std::cout << "Value = " << value << std::endl;
     // if (isValidDate(date) && isValidValue(value))
     // {
     //     float   rate =
     //     std::cout << date << " => " << value * rate << std::endl;
     // }
     return;
+}
+
+bool BitcoinExchange::isValidValue(double value)
+{
+    if (value < 0)
+    {
+        std::cout << "Error: not a positive number." << std::endl;
+        return false;
+    }
+    if (value > 1000)
+    {
+        std::cout << "Error: too large a number." << std::endl;
+        return false;
+    }
+    return true;
 }
