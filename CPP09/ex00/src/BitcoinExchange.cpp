@@ -87,6 +87,7 @@ void BitcoinExchange::processInputFile(std::string filepath)
 
 void BitcoinExchange::calculatePrice(std::string line)
 {
+    //change to handle multiple white space cases
     std::istringstream  streamLine(line);
     std::string date;
     char    delim;
@@ -96,14 +97,50 @@ void BitcoinExchange::calculatePrice(std::string line)
         std::cout << "Error: bad input => " << line << std::endl;
         return;
     }
+    if (!isValidDate(date))
+    {
+        std::cout << "Error: invalid date => " << date << std::endl;
+        return;
+    }
     if (isValidValue(value))
-        std::cout << "Value = " << value << std::endl;
-    // if (isValidDate(date) && isValidValue(value))
-    // {
-    //     float   rate =
-    //     std::cout << date << " => " << value * rate << std::endl;
-    // }
+    {
+        // float   rate =
+        std::cout << date << " => " << value << std::endl;
+    }
     return;
+}
+
+static bool isLeapYear(int year)
+{
+    return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+}
+
+bool BitcoinExchange::isValidDate(std::string date)
+{
+    if (date.size() != 10)
+        return false;
+
+    std::istringstream  dateStream(date);
+    int year, month, day;
+    char    dash1, dash2;
+    if (!(dateStream >> year >> dash1 >> month >> dash2 >> day))
+        return false;
+    if (dash1 != '-' || dash2 != '-')
+        return false;
+    if (month < 1 || month > 12)
+        return false;
+    if (day < 1 || day > 31)
+        return false;
+    if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+        return false;
+    if (month == 2)
+    {
+        if (isLeapYear(year) && day != 29)
+            return false;
+        if (day > 28)
+            return false;
+    }
+    return true;
 }
 
 bool BitcoinExchange::isValidValue(double value)

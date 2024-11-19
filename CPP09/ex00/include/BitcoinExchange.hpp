@@ -30,6 +30,7 @@ public:
     void    loadDB(void);
 	void	processInputFile(std::string filepath);
     void    calculatePrice(std::string line);
+    bool    isValidDate(std::string date);
     bool    isValidValue(double value);
 
 private:
