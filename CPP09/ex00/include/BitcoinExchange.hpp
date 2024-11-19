@@ -32,6 +32,7 @@ public:
     void    calculatePrice(std::string line);
     bool    isValidDate(std::string date);
     bool    isValidValue(double value);
+    float   getPriceRate(const std::string date);
 
 private:
     std::map<std::string, float>    _btcPriceDB;

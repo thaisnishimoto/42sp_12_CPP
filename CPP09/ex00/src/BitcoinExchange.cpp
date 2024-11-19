@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <BitcoinExchange.hpp>
+#include <math.h>
 #include <version>
 
 BitcoinExchange::BitcoinExchange()
@@ -104,8 +105,8 @@ void BitcoinExchange::calculatePrice(std::string line)
     }
     if (isValidValue(value))
     {
-        // float   rate =
-        std::cout << date << " => " << value << std::endl;
+        float   rate = getPriceRate(date);
+        std::cout << date << " => " << value << " = "<< value * rate << std::endl;
     }
     return;
 }
@@ -156,4 +157,13 @@ bool BitcoinExchange::isValidValue(double value)
         return false;
     }
     return true;
+}
+
+float BitcoinExchange::getPriceRate(const std::string date)
+{
+    std::map<std::string, float>::iterator  it;
+    it = _btcPriceDB.lower_bound(date);
+    if (it->first != date)
+        --it;
+    return it->second;
 }
