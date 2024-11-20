@@ -48,6 +48,13 @@ void BitcoinExchange::loadDB()
         throw std::runtime_error("invalid header format in data.csv");
     }
 
+    //Check if db is empty
+    if (dbFile.peek() == std::ifstream::traits_type::eof())
+    {
+        dbFile.close();
+        throw std::runtime_error("data.csv has no data.");
+    }
+
     //load data into map container
     while (std::getline(dbFile, line))
     {
@@ -75,6 +82,13 @@ void BitcoinExchange::processInputFile(std::string filepath)
     {
         inputFile.close();
         throw std::runtime_error("invalid header format in input file");
+    }
+
+    //Check if input file is empty
+    if (inputFile.peek() == std::ifstream::traits_type::eof())
+    {
+        inputFile.close();
+        throw std::runtime_error("input file has no data.");
     }
 
     std::string line;
