@@ -25,9 +25,7 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange& src) : _btcPriceDB(src._
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& rhs)
 {
     if (this != &rhs)
-    {
         this->_btcPriceDB = rhs._btcPriceDB;
-    }
     return *this;
 }
 
@@ -44,7 +42,7 @@ void BitcoinExchange::loadDB()
     //Check db header
     std::string line;
     std::getline(dbFile, line);
-    if (line != "date,exchange_rate")
+    if (line!= "date,exchange_rate")
     {
         dbFile.close();
         throw std::runtime_error("invalid header format in data.csv");
@@ -136,9 +134,9 @@ bool BitcoinExchange::isValidDate(std::string date)
         return false;
     if (month == 2)
     {
-        if (isLeapYear(year) && day != 29)
+        if (isLeapYear(year) && day > 29)
             return false;
-        if (day > 28)
+        if (!isLeapYear(year) && day > 28)
             return false;
     }
     return true;
@@ -163,7 +161,7 @@ float BitcoinExchange::getPriceRate(const std::string date)
 {
     std::map<std::string, float>::iterator  it;
     it = _btcPriceDB.lower_bound(date);
-    if (it->first != date)
+    if (it->first != date && it != _btcPriceDB.begin())
         --it;
     return it->second;
 }
