@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include <BitcoinExchange.hpp>
-#include <math.h>
-#include <version>
 
 BitcoinExchange::BitcoinExchange()
 {
@@ -82,7 +80,7 @@ void BitcoinExchange::processInputFile(std::string filepath)
     {
         inputFile.close();
         throw std::runtime_error("invalid header format in input file");
-    }
+}
 
     //Check if input file is empty
     if (inputFile.peek() == std::ifstream::traits_type::eof())
@@ -91,6 +89,7 @@ void BitcoinExchange::processInputFile(std::string filepath)
         throw std::runtime_error("input file has no data.");
     }
 
+    //Calculate btc price for each input line
     std::string line;
     while (std::getline(inputFile, line))
         calculatePrice(line);
@@ -100,16 +99,18 @@ void BitcoinExchange::processInputFile(std::string filepath)
 
 void BitcoinExchange::calculatePrice(std::string line)
 {
-    //change to handle multiple white space cases
-    std::istringstream  streamLine(line);
-    std::string date;
-    char    delim;
-    double  value;
-    if (!(streamLine >> date >> delim >> value) || delim != '|')
+    if (!isValidInput(line))
     {
         std::cout << "Error: bad input => " << line << std::endl;
         return;
     }
+
+    std::istringstream  streamLine(line);
+    std::string date;
+    char    delim;
+    double  value;
+    streamLine >> date >> delim >> value;
+
     if (!isValidDate(date))
     {
         std::cout << "Error: invalid date => " << date << std::endl;
@@ -123,6 +124,34 @@ void BitcoinExchange::calculatePrice(std::string line)
     return;
 }
 
+static bool isDigit(std::string value)
+{
+    std::istringstream  iss(value);
+    double  digits;
+    if (!(iss >> digits))
+        return false;
+    if (!iss.eof())
+        return false;
+    return true;
+}
+
+bool BitcoinExchange::isValidInput(std::string line)
+{
+    std::size_t delimPos = line.find(" | ");
+    if (delimPos == std::string::npos)
+        return false;
+
+    std::string dateStr = line.substr(0, delimPos);
+    if (dateStr.empty() || dateStr.find(' ') != std::string::npos)
+        return false;
+
+    std::string valueStr = line.substr(delimPos + 3, std::string::npos);
+    if (valueStr.empty() || valueStr.find(' ') != std::string::npos || !isDigit(valueStr))
+        return false;
+
+    return true;
+}
+
 static bool isLeapYear(int year)
 {
     return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
@@ -130,15 +159,13 @@ static bool isLeapYear(int year)
 
 bool BitcoinExchange::isValidDate(std::string date)
 {
-    if (date.size() != 10)
+    if (date.size() != 10 || date[4] != '-' || date[7] != '-')
         return false;
 
     std::istringstream  dateStream(date);
     int year, month, day;
-    char    dash1, dash2;
-    if (!(dateStream >> year >> dash1 >> month >> dash2 >> day))
-        return false;
-    if (dash1 != '-' || dash2 != '-')
+    char    dash;
+    if (!(dateStream >> year >> dash >> month >> dash >> day))
         return false;
     if (month < 1 || month > 12)
         return false;
