@@ -30,6 +30,7 @@ public:
     void    loadDB(void);
 	void	processInputFile(std::string filepath);
     void    calculatePrice(std::string line);
+    void    validateFile(std::ifstream& fileStream, std::string file, std::string format);
     bool    isValidInput(std::string line);
     bool    isValidDate(std::string date);
     bool    isValidValue(double value);
@@ -38,5 +39,9 @@ public:
 private:
     std::map<std::string, float>    _btcPriceDB;
 };
+
+//Utils functions
+bool isLeapYear(int year);
+bool isDigit(std::string value);
 
 #endif

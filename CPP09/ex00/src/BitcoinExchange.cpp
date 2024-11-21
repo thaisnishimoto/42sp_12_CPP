@@ -34,26 +34,10 @@ BitcoinExchange::~BitcoinExchange()
 void BitcoinExchange::loadDB()
 {
     std::ifstream   dbFile("data.csv");
-    if (!dbFile.is_open())
-        throw std::runtime_error("could not open data.csv");
-
-    //Check db header
-    std::string line;
-    std::getline(dbFile, line);
-    if (line!= "date,exchange_rate")
-    {
-        dbFile.close();
-        throw std::runtime_error("invalid header format in data.csv");
-    }
-
-    //Check if db is empty
-    if (dbFile.peek() == std::ifstream::traits_type::eof())
-    {
-        dbFile.close();
-        throw std::runtime_error("data.csv has no data.");
-    }
+    validateFile(dbFile, "data.csv", "date,exchange_rate");
 
     //load data into map container
+    std::string line;
     while (std::getline(dbFile, line))
     {
         std::istringstream  streamLine(line);
@@ -70,24 +54,7 @@ void BitcoinExchange::loadDB()
 void BitcoinExchange::processInputFile(std::string filepath)
 {
     std::ifstream   inputFile(filepath.c_str());
-    if (!inputFile.is_open())
-        throw std::runtime_error("could not open input file");
-
-    //Check input file header
-    std::string firstLine;
-    std::getline(inputFile, firstLine);
-    if (firstLine != "date | value")
-    {
-        inputFile.close();
-        throw std::runtime_error("invalid header format in input file");
-}
-
-    //Check if input file is empty
-    if (inputFile.peek() == std::ifstream::traits_type::eof())
-    {
-        inputFile.close();
-        throw std::runtime_error("input file has no data.");
-    }
+    validateFile(inputFile, filepath, "date | value");
 
     //Calculate btc price for each input line
     std::string line;
@@ -95,6 +62,28 @@ void BitcoinExchange::processInputFile(std::string filepath)
         calculatePrice(line);
 
     inputFile.close();
+}
+
+void BitcoinExchange::validateFile(std::ifstream& fileStream, std::string file, std::string format)
+{
+    if (!fileStream.is_open())
+        throw std::runtime_error("could not open " + file);
+
+    //Check file header
+    std::string firstLine;
+    std::getline(fileStream, firstLine);
+    if (firstLine != format)
+    {
+        fileStream.close();
+        throw std::runtime_error("invalid header format in " + file);
+    }
+
+    //Check if file is empty
+    if (fileStream.peek() == std::ifstream::traits_type::eof())
+    {
+        fileStream.close();
+        throw std::runtime_error(file + " has no data.");
+    }
 }
 
 void BitcoinExchange::calculatePrice(std::string line)
@@ -124,17 +113,6 @@ void BitcoinExchange::calculatePrice(std::string line)
     return;
 }
 
-static bool isDigit(std::string value)
-{
-    std::istringstream  iss(value);
-    double  digits;
-    if (!(iss >> digits))
-        return false;
-    if (!iss.eof())
-        return false;
-    return true;
-}
-
 bool BitcoinExchange::isValidInput(std::string line)
 {
     std::size_t delimPos = line.find(" | ");
@@ -150,11 +128,6 @@ bool BitcoinExchange::isValidInput(std::string line)
         return false;
 
     return true;
-}
-
-static bool isLeapYear(int year)
-{
-    return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
 }
 
 bool BitcoinExchange::isValidDate(std::string date)
@@ -205,4 +178,22 @@ float BitcoinExchange::getPriceRate(const std::string date)
     if (it->first != date && it != _btcPriceDB.begin())
         --it;
     return it->second;
+}
+
+//Utils functions
+
+bool isLeapYear(int year)
+{
+    return (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0));
+}
+
+bool isDigit(std::string value)
+{
+    std::istringstream  iss(value);
+    double  digits;
+    if (!(iss >> digits))
+        return false;
+    if (!iss.eof())
+        return false;
+    return true;
 }
