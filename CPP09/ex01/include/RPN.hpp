@@ -13,8 +13,10 @@
 #ifndef RPN_HPP
 #define RPN_HPP
 
-#include <iostream>
 #include <stack>
+#include <iostream>
+#include <sstream> //istringstream
+#include <stdexcept> //invalid_argument, runtime_error, domain_error
 
 class    RPN
 {
@@ -25,6 +27,12 @@ public:
     ~RPN();
 
     void    processExpression(std::string expression);
+    bool    isValidDigit(std::string elem);
+    int    getOperand();
+    void    addValues();
+    void    subtractValues();
+    void    multiplyValues();
+    void    divideValues();
 
 private:
     std::stack<int>    _operands;
