@@ -47,12 +47,12 @@ void  RPN::processExpression(std::string expression)
     else if (elem == "/")
       divideValues();
     else
-      throw std::invalid_argument("Error");
+      throw std::invalid_argument("invalid token");
   }
   if (_operands.size() == 1)
     std::cout << _operands.top() << std::endl;
   else
-    throw std::runtime_error("Error");
+    throw std::runtime_error("invalid expression");
 }
 
 bool  RPN::isValidDigit(std::string elem)
@@ -64,7 +64,7 @@ bool  RPN::isValidDigit(std::string elem)
     return false;
 
   if (num >= 10)
-    throw std::invalid_argument("Error");
+    throw std::invalid_argument("numbers must be < 10");
 
   _operands.push(num);
   return true;
@@ -73,7 +73,7 @@ bool  RPN::isValidDigit(std::string elem)
 int RPN::getOperand()
 {
   if (_operands.empty())
-    throw std::runtime_error("Error");
+    throw std::runtime_error("insufficient operands");
   int operand = _operands.top();
   _operands.pop();
   return operand;
@@ -105,6 +105,6 @@ void  RPN::divideValues()
   int num2 = getOperand();
   int num1 = getOperand();
   if (num2 == 0)
-    throw std::domain_error("Error");
+    throw std::domain_error("division by zero");
   _operands.push(num1 / num2);
 }

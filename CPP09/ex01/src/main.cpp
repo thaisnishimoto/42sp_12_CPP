@@ -23,7 +23,7 @@ int	main(int argc, char *argv[])
 		RPN calculator;
 		calculator.processExpression(argv[1]);
 	} catch (std::exception& e) {
-		std::cout << e.what() << std::endl;
+		std::cout << "Error: " << e.what() << std::endl;
 		return 1;
 	}
 	return 0;
