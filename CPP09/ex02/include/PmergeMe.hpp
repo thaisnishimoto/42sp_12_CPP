@@ -31,10 +31,27 @@ public:
 
     void validateInput(int argc, char* argv[]);
     void sortControl(int argc, char* argv[]);
+    void sortVector(int argc, char* argv[]);
 
 private:
     std::vector<int> _controlVec;
+    std::vector<int> _vector;
 };
+
+template <typename T>
+T parseSequence(int argc, char* argv[])
+{
+    T container;
+    int value;
+    for (int i = 1; i < argc; ++i)
+    {
+        std::string input = argv[i];
+        std::istringstream iss(input);
+        iss >> value;
+        container.push_back(value);
+    }
+    return container;
+}
 
 template <typename Container>
 void printContainer(const Container& sequence)

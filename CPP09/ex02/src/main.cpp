@@ -20,9 +20,10 @@ int	main(int argc, char *argv[])
 		return 1;
 	}
 	try {
-		PmergeMe mergeInsert;
-        mergeInsert.validateInput(argc, argv);
-        mergeInsert.sortControl(argc, argv);
+		PmergeMe pm;
+        pm.validateInput(argc, argv);
+        pm.sortControl(argc, argv);
+        pm.sortVector(argc, argv);
 	} catch (std::exception& e) {
 		std::cout << "Error: " << e.what() << std::endl;
 		return 1;

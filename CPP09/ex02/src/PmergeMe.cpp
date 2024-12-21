@@ -54,19 +54,18 @@ void PmergeMe::validateInput(int argc, char* argv[])
 
 void PmergeMe::sortControl(int argc, char* argv[])
 {
-    int value;
-
-    for (int i = 1; i < argc; ++i)
-    {
-        std::string input = argv[i];
-        std::istringstream iss(input);
-        iss >> value;
-        _controlVec.push_back(value);
-    }
+    _controlVec = parseSequence<std::vector<int> >(argc, argv);
     std::cout << "Before:  ";
     printContainer(_controlVec);
 
     std::sort(_controlVec.begin(), _controlVec.end());
     std::cout << "After:   ";
     printContainer(_controlVec);
+}
+
+void PmergeMe::sortVector(int argc, char* argv[])
+{
+    _vector = parseSequence<std::vector<int> >(argc, argv);
+    std::cout << "Before vec:  ";
+    printContainer(_vector);
 }
