@@ -22,6 +22,7 @@ int	main(int argc, char *argv[])
 	try {
 		PmergeMe mergeInsert;
         mergeInsert.validateInput(argc, argv);
+        mergeInsert.sortControl(argc, argv);
 	} catch (std::exception& e) {
 		std::cout << "Error: " << e.what() << std::endl;
 		return 1;

@@ -17,6 +17,7 @@
 #include <vector>
 #include <list>
 #include <set>
+#include <algorithm>
 #include <sstream>
 #include <stdexcept>
 
@@ -29,11 +30,22 @@ public:
     ~PmergeMe();
 
     void validateInput(int argc, char* argv[]);
-//    void displaySequence();
+    void sortControl(int argc, char* argv[]);
 
 private:
-
-
+    std::vector<int> _controlVec;
 };
+
+template <typename Container>
+void printContainer(const Container& sequence)
+{
+    typename Container::const_iterator it = sequence.begin();
+    while (it < sequence.end())
+    {
+        std::cout << *it << " ";
+        ++it;
+    }
+    std::cout << std::endl;
+}
 
 #endif

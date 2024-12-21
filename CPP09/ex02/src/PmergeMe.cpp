@@ -38,7 +38,7 @@ void PmergeMe::validateInput(int argc, char* argv[])
     int value;
     std::set<int> uniqueNumbers;
 
-    for (int i = 1; i < argc; i++)
+    for (int i = 1; i < argc; ++i)
     {
         std::string input = argv[i];
         std::istringstream iss(input);
@@ -50,4 +50,23 @@ void PmergeMe::validateInput(int argc, char* argv[])
           throw std::invalid_argument("Invalid duplicated input '" + input + "'");
         uniqueNumbers.insert(value);
     }
+}
+
+void PmergeMe::sortControl(int argc, char* argv[])
+{
+    int value;
+
+    for (int i = 1; i < argc; ++i)
+    {
+        std::string input = argv[i];
+        std::istringstream iss(input);
+        iss >> value;
+        _controlVec.push_back(value);
+    }
+    std::cout << "Before:  ";
+    printContainer(_controlVec);
+
+    std::sort(_controlVec.begin(), _controlVec.end());
+    std::cout << "After:   ";
+    printContainer(_controlVec);
 }
