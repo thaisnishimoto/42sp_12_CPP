@@ -68,4 +68,29 @@ void printContainer(const Container& sequence)
     std::cout << std::endl;
 }
 
+template <typename T, typename PairContainer>
+void mergeInsertionSort(T& container)
+{
+    //step1: separate number that cannot be paired
+  	int oddOut = -1;
+    if (container.size() % 2 != 0)
+    {
+    	oddOut = container.back();
+    	container.pop_back();
+	}
+
+    //step2: divide elements in sorted pairs
+    PairContainer pairs;
+    for (size_t i = 0; i < container.size(); i += 2)
+    {
+    	if (container[i] > container[i + 1])
+    		pairs.push_back(std::make_pair(container[i], container[i + 1]));
+        else
+    		pairs.push_back(std::make_pair(container[i + 1], container[i]));
+    }
+
+    if (oddOut != -1)
+    	std::cout << "even sequence" << std::endl;
+}
+
 #endif

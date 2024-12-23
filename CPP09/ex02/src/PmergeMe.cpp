@@ -68,7 +68,7 @@ void PmergeMe::sortVector(int argc, char* argv[])
 	std::clock_t startTime = clock();
 
     _vector = parseSequence<std::vector<int> >(argc, argv);
-    //mergeInsertSort(_vector);
+    mergeInsertionSort<std::vector<int>, std::vector<std::pair<int, int> > >(_vector);
     //if _vector != _controlVector
     //throw sort fail
 
