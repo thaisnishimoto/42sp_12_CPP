@@ -65,7 +65,15 @@ void PmergeMe::sortControl(int argc, char* argv[])
 
 void PmergeMe::sortVector(int argc, char* argv[])
 {
+	std::clock_t startTime = clock();
+
     _vector = parseSequence<std::vector<int> >(argc, argv);
-    std::cout << "Before vec:  ";
-    printContainer(_vector);
+    //mergeInsertSort(_vector);
+    //if _vector != _controlVector
+    //throw sort fail
+
+	std::clock_t finishTime = clock();
+    double elapsedTime = static_cast<double>(finishTime - startTime) / CLOCKS_PER_SEC * 1e6;
+    std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector : "
+    	<< std::fixed << std::setprecision(5) << elapsedTime << " us" << std::endl;
 }

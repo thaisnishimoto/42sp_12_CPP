@@ -20,6 +20,9 @@
 #include <algorithm>
 #include <sstream>
 #include <stdexcept>
+#include <ctime> //clock(), CLOCKS_PER_SEC
+#include <iomanip> //setprecision
+#include <unistd.h>
 
 class PmergeMe
 {
