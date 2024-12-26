@@ -14,6 +14,7 @@
 #define RPN_HPP
 
 #include <stack>
+#include <list>
 #include <iostream>
 #include <sstream> //istringstream
 #include <stdexcept> //invalid_argument, runtime_error, domain_error
@@ -35,7 +36,7 @@ public:
     void    divideValues();
 
 private:
-    std::stack<int>    _operands;
+    std::stack<int, std::list<int> >    _operands;
 };
 
 #endif
