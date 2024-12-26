@@ -71,18 +71,6 @@ void printContainer(const Container& sequence)
 }
 
 template <typename PairContainer>
-void printPairs(const PairContainer& pairs)
-{
-    typename PairContainer::const_iterator it = pairs.begin();
-    while (it < pairs.end())
-    {
-        std::cout << "(" << it->first << ", " << it->second << ") ";
-        ++it;
-    }
-    std::cout << std::endl;
-}
-
-template <typename PairContainer>
 void mergeSortPairs(PairContainer& pairs)
 {
 	//base case
@@ -169,7 +157,7 @@ template <typename T, typename PairContainer>
 void mergeInsertionSort(T& container)
 {
     //step1: separate number that cannot be paired
-	int oddOut = -1;
+    int oddOut = -1;
     if (container.size() % 2 != 0)
     {
     	oddOut = container.back();
