@@ -69,8 +69,9 @@ void PmergeMe::sortVector(int argc, char* argv[])
 
     _vector = parseSequence<std::vector<int> >(argc, argv);
     mergeInsertionSort<std::vector<int>, std::vector<std::pair<int, int> > >(_vector);
-    //if _vector != _controlVector
-    //throw sort fail
+    printContainer(_vector);
+//    if _vector != _controlVector
+//        throw std::runtime_error("Sorting vector failed");
 
 	std::clock_t finishTime = clock();
     double elapsedTime = static_cast<double>(finishTime - startTime) / CLOCKS_PER_SEC * 1e6;

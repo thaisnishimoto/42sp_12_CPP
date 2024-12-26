@@ -148,8 +148,21 @@ template <typename T>
 void binaryInsertSort(T& sorted, T& pend)
 {
     T insertionSeq = generateInsertionSequence<T>(pend.size());
-    printContainer(insertionSeq);
-    (void)sorted;
+    for (size_t i = 1; i < insertionSeq.size(); ++i)
+    {
+        int elem = pend[insertionSeq[i] - 1];
+        int left = 0;
+        int right = i;
+        while (left < right)
+        {
+            int middle = left + (right - left) / 2;
+            if (elem > sorted[middle])
+                left = middle + 1; //search upper half
+            else
+                right = middle; //search lower half
+        }
+        sorted.insert(sorted.begin() + left, elem);
+    }
 }
 
 template <typename T, typename PairContainer>
@@ -173,7 +186,6 @@ void mergeInsertionSort(T& container)
 
     //Step 3: Recursively sort the pairs by the larger elements
     mergeSortPairs<PairContainer>(pairs);
-//    printPairs(pairs);
 
     //Step 4: Create the sorted and pend containers
     T sorted;
@@ -185,8 +197,6 @@ void mergeInsertionSort(T& container)
 	}
     if (oddOut != -1)
         pend.push_back(oddOut);
-//    printContainer(sort);
-//    printContainer(pend);
 
     //Step 5: Insert the smallest element of the first pair at the start
     sorted.insert(sorted.begin(), pend[0]);
@@ -194,7 +204,6 @@ void mergeInsertionSort(T& container)
     //Step 6: Insert pend in sorted, binary searching until matching pair
     //Following the Jacobsthal sequence order
     binaryInsertSort(sorted, pend);
-
     container = sorted;
     return;
 }
