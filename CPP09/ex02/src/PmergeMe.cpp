@@ -55,10 +55,12 @@ void PmergeMe::validateInput(int argc, char* argv[])
 void PmergeMe::sortControl(int argc, char* argv[])
 {
     _controlVec = parseSequence<std::vector<int> >(argc, argv);
+    _controlDeq = parseSequence<std::deque<int> >(argc, argv);
     std::cout << "Before:  ";
     printContainer(_controlVec);
 
     std::sort(_controlVec.begin(), _controlVec.end());
+    std::sort(_controlDeq.begin(), _controlDeq.end());
     std::cout << "After:   ";
     printContainer(_controlVec);
 }
@@ -78,6 +80,20 @@ void PmergeMe::sortVector(int argc, char* argv[])
     	<< std::fixed << std::setprecision(5) << elapsedTime << " us" << std::endl;
 }
 
+void PmergeMe::sortDeque(int argc, char* argv[])
+{
+	std::clock_t startTime = clock();
+
+    _deque = parseSequence<std::deque<int> >(argc, argv);
+    mergeInsertionSort<std::deque<int>, std::deque<std::pair<int, int> > >(_deque);
+    if (_deque != _controlDeq)
+        throw std::runtime_error("Sorting deque failed");
+
+    std::clock_t finishTime = clock();
+    double elapsedTime = static_cast<double>(finishTime - startTime) / CLOCKS_PER_SEC * 1e6;
+    std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque : "
+    	<< std::fixed << std::setprecision(5) << elapsedTime << " us" << std::endl;
+}
 //Get the next number in the jacobsthal sequence
 int jacobsthal(int num)
 {

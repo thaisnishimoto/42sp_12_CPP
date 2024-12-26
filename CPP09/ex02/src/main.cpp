@@ -24,6 +24,7 @@ int	main(int argc, char *argv[])
         pm.validateInput(argc, argv);
         pm.sortControl(argc, argv);
         pm.sortVector(argc, argv);
+        pm.sortDeque(argc, argv);
 	} catch (std::exception& e) {
 		std::cout << "Error: " << e.what() << std::endl;
 		return 1;

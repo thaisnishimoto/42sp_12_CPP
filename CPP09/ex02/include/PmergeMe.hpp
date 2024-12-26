@@ -35,10 +35,13 @@ public:
     void validateInput(int argc, char* argv[]);
     void sortControl(int argc, char* argv[]);
     void sortVector(int argc, char* argv[]);
+    void sortDeque(int argc, char* argv[]);
 
 private:
     std::vector<int> _controlVec;
     std::vector<int> _vector;
+    std::deque<int> _controlDeq;
+    std::deque<int> _deque;
 };
 
 int jacobsthal(int num);
