@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 10:21:27 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/12/25 23:09:20 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/12/26 19:20:34 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ void printContainer(const Container& sequence)
 template <typename PairContainer>
 void mergeSortPairs(PairContainer& pairs)
 {
-	//base case
-	if (pairs.size() == 1)
-          return;
+    //base case
+    if (pairs.size() == 1)
+        return;
 
     //Divide pairs in halves
     PairContainer left;
@@ -90,16 +90,16 @@ void mergeSortPairs(PairContainer& pairs)
     mergeSortPairs(left);
     mergeSortPairs(right);
 
-	//merge sorted halves back, in order
+    //merge sorted halves back, in order
     size_t i = 0;
     size_t l = 0;
     size_t r = 0;
     while (l < left.size() && r < right.size())
     {
     	if (left[l].first < right[r].first)
-        	pairs[i++] = left[l++];
+            pairs[i++] = left[l++];
         else
-        	pairs[i++] = right[r++];
+            pairs[i++] = right[r++];
     }
     while (l < left.size())
         pairs[i++] = left[l++];
@@ -143,7 +143,7 @@ void binaryInsertSort(T& sorted, T& pend)
     {
         int elem = pend[insertionSeq[i] - 1];
         int left = 0;
-        int right = insertionSeq[i] + i; //get matching pair, considering numbers inserted so fa
+        int right = insertionSeq[i] -1 + i; //get matching pair, considering numbers inserted so fa
 
         while (left < right)
         {
@@ -166,7 +166,7 @@ void mergeInsertionSort(T& container)
     {
     	oddOut = container.back();
     	container.pop_back();
-	}
+    }
 
     //step2: divide elements in descending sorted pairs
     PairContainer pairs;
@@ -186,7 +186,7 @@ void mergeInsertionSort(T& container)
     {
         sorted.push_back(pairs[i].first);
         pend.push_back(pairs[i].second);
-	}
+    }
     if (oddOut != -1)
         pend.push_back(oddOut);
 

@@ -6,7 +6,7 @@
 /*   By: tmina-ni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 15:33:33 by tmina-ni          #+#    #+#             */
-/*   Updated: 2024/12/18 15:33:36 by tmina-ni         ###   ########.fr       */
+/*   Updated: 2024/12/26 19:17:42 by tmina-ni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void PmergeMe::sortDeque(int argc, char* argv[])
     std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque : "
     	<< std::fixed << std::setprecision(5) << elapsedTime << " ms" << std::endl;
 }
+
 //Get the next number in the jacobsthal sequence
 int jacobsthal(int num)
 {
