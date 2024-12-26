@@ -118,10 +118,6 @@ void mergeSortPairs(PairContainer& pairs)
 template <typename T, typename PairContainer>
 void mergeInsertionSort(T& container)
 {
-//    //base case
-//    if (container.size() == 1)
-//    	return ;
-//
     //step1: separate number that cannot be paired
 	int oddOut = -1;
     if (container.size() % 2 != 0)
@@ -134,36 +130,30 @@ void mergeInsertionSort(T& container)
     PairContainer pairs;
     for (size_t i = 0; i < container.size(); i += 2)
     {
-    	if (container[i] > container[i + 1])
-    		pairs.push_back(std::make_pair(container[i], container[i + 1]));
-        else
-    		pairs.push_back(std::make_pair(container[i + 1], container[i]));
+    	pairs.push_back(std::make_pair(std::max(container[i], container[i + 1]),
+        				std::min(container[i], container[i + 1])));
     }
 
-    //Step 3: Recursively sort the pairs by larger elements
-    printPairs(pairs);
+    //Step 3: Recursively sort the pairs by the larger elements
     mergeSortPairs<PairContainer>(pairs);
-    printPairs(pairs);
+//    printPairs(pairs);
 
-//    //Step 3: Recursively sort the larger elements (from each pair), creating a sorted sequence
-//    T larger;
-//    for (size_t i = 0; i < pairs.size(); ++i)
-//    	larger.push_back(pairs[i].first);
-//    T sorted = mergeInsertionSort(larger);
-//
-//    //Step 4: Create the pend container that holds the second elements of the pairs
-//    // in the same order as the sorted larger elements
-//    for (size_t i = 0; i < sorted.size(); ++i)
-//    {
-//    	if n;
-//}
+    //Step 4: Create the sort and pend containers
+    T sort;
+    T pend;
+    for (size_t i = 0; i < pairs.size(); ++i)
+    {
+        sort.push_back(pairs[i].first);
+        pend.push_back(pairs[i].second);
+	}
+    if (oddOut != -1)
+        pend.push_back(oddOut);
 
-//    }
+    printContainer(sort);
+    printContainer(pend);
 
     //Step 5: Insert the smallest element of the first pair at the start
 
-    if (oddOut != -1)
-    	std::cout << "even sequence" << std::endl;
 }
 
 #endif
