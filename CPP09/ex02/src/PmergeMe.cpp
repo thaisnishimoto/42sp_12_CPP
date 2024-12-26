@@ -77,3 +77,13 @@ void PmergeMe::sortVector(int argc, char* argv[])
     std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector : "
     	<< std::fixed << std::setprecision(5) << elapsedTime << " us" << std::endl;
 }
+
+//Get the next number in the jacobsthal sequence
+int jacobsthal(int num)
+{
+    if (num == 0)
+        return 0;
+    if (num == 1)
+        return 1;
+    return jacobsthal(num - 1) + 2 * jacobsthal(num - 2);
+}

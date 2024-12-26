@@ -41,6 +41,8 @@ private:
     std::vector<int> _vector;
 };
 
+int jacobsthal(int num);
+
 template <typename T>
 T parseSequence(int argc, char* argv[])
 {
@@ -115,6 +117,46 @@ void mergeSortPairs(PairContainer& pairs)
     return;
 }
 
+template <typename T>
+T generateInsertionSequence(size_t size)
+{
+  (void)size;
+    T sequence;
+//    int jacobIndex = 2;
+//
+//    int next = jacobsthal(jacobIndex++);
+//    sequence.push_back(next);
+//
+//    while (sequence.size() < size)
+//    {
+//        next = jacobsthal(jacobIndex++);
+//
+//        // Adjust 'next' if it exceeds the size
+//        if (next > static_cast<int>(size))
+//            next = static_cast<int>(size);
+//
+//        // Add numbers in decreasing order from 'next'
+//        while (std::find(sequence.begin(), sequence.end(), next) == sequence.end())
+//        {
+//            sequence.push_back(next);
+//            --next;
+//        }
+//    }
+    for (int i = 0; i < 15; ++i)
+    {
+      sequence.push_back(jacobsthal(i));
+    }
+    return sequence;
+}
+
+template <typename T>
+void binaryInsertSort(T& sorted, T& pend)
+{
+    T insertionSeq = generateInsertionSequence<T>(pend.size());
+    printContainer(insertionSeq);
+    (void)sorted;
+}
+
 template <typename T, typename PairContainer>
 void mergeInsertionSort(T& container)
 {
@@ -138,12 +180,12 @@ void mergeInsertionSort(T& container)
     mergeSortPairs<PairContainer>(pairs);
 //    printPairs(pairs);
 
-    //Step 4: Create the sort and pend containers
-    T sort;
+    //Step 4: Create the sorted and pend containers
+    T sorted;
     T pend;
     for (size_t i = 0; i < pairs.size(); ++i)
     {
-        sort.push_back(pairs[i].first);
+        sorted.push_back(pairs[i].first);
         pend.push_back(pairs[i].second);
 	}
     if (oddOut != -1)
@@ -152,11 +194,14 @@ void mergeInsertionSort(T& container)
 //    printContainer(pend);
 
     //Step 5: Insert the smallest element of the first pair at the start
-    sort.insert(sort.begin(), pend[0]);
+    sorted.insert(sorted.begin(), pend[0]);
 
-    //Step 6:
+    //Step 6: Insert pend in sorted, binary searching until matching pair
+    //Following the Jacobsthal sequence order
+    binaryInsertSort(sorted, pend);
 
-
+    container = sorted;
+    return;
 }
 
 #endif
