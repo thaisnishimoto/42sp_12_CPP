@@ -69,11 +69,10 @@ void PmergeMe::sortVector(int argc, char* argv[])
 
     _vector = parseSequence<std::vector<int> >(argc, argv);
     mergeInsertionSort<std::vector<int>, std::vector<std::pair<int, int> > >(_vector);
-    printContainer(_vector);
-//    if _vector != _controlVector
-//        throw std::runtime_error("Sorting vector failed");
+    if (_vector != _controlVec)
+        throw std::runtime_error("Sorting vector failed");
 
-	std::clock_t finishTime = clock();
+    std::clock_t finishTime = clock();
     double elapsedTime = static_cast<double>(finishTime - startTime) / CLOCKS_PER_SEC * 1e6;
     std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector : "
     	<< std::fixed << std::setprecision(5) << elapsedTime << " us" << std::endl;

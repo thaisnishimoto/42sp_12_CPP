@@ -140,7 +140,8 @@ void binaryInsertSort(T& sorted, T& pend)
     {
         int elem = pend[insertionSeq[i] - 1];
         int left = 0;
-        int right = i;
+        int right = insertionSeq[i] + i; //get matching pair, considering numbers inserted so fa
+
         while (left < right)
         {
             int middle = left + (right - left) / 2;
