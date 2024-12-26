@@ -75,9 +75,9 @@ void PmergeMe::sortVector(int argc, char* argv[])
         throw std::runtime_error("Sorting vector failed");
 
     std::clock_t finishTime = clock();
-    double elapsedTime = static_cast<double>(finishTime - startTime) / CLOCKS_PER_SEC * 1e6;
+    double elapsedTime = static_cast<double>(finishTime - startTime) / CLOCKS_PER_SEC * 1e3;
     std::cout << "Time to process a range of " << _vector.size() << " elements with std::vector : "
-    	<< std::fixed << std::setprecision(5) << elapsedTime << " us" << std::endl;
+    	<< std::fixed << std::setprecision(5) << elapsedTime << " ms" << std::endl;
 }
 
 void PmergeMe::sortDeque(int argc, char* argv[])
@@ -90,9 +90,9 @@ void PmergeMe::sortDeque(int argc, char* argv[])
         throw std::runtime_error("Sorting deque failed");
 
     std::clock_t finishTime = clock();
-    double elapsedTime = static_cast<double>(finishTime - startTime) / CLOCKS_PER_SEC * 1e6;
+    double elapsedTime = static_cast<double>(finishTime - startTime) / CLOCKS_PER_SEC * 1e3;
     std::cout << "Time to process a range of " << _deque.size() << " elements with std::deque : "
-    	<< std::fixed << std::setprecision(5) << elapsedTime << " us" << std::endl;
+    	<< std::fixed << std::setprecision(5) << elapsedTime << " ms" << std::endl;
 }
 //Get the next number in the jacobsthal sequence
 int jacobsthal(int num)
