@@ -120,31 +120,26 @@ void mergeSortPairs(PairContainer& pairs)
 template <typename T>
 T generateInsertionSequence(size_t size)
 {
-  (void)size;
     T sequence;
-//    int jacobIndex = 2;
-//
-//    int next = jacobsthal(jacobIndex++);
-//    sequence.push_back(next);
-//
-//    while (sequence.size() < size)
-//    {
-//        next = jacobsthal(jacobIndex++);
-//
-//        // Adjust 'next' if it exceeds the size
-//        if (next > static_cast<int>(size))
-//            next = static_cast<int>(size);
-//
-//        // Add numbers in decreasing order from 'next'
-//        while (std::find(sequence.begin(), sequence.end(), next) == sequence.end())
-//        {
-//            sequence.push_back(next);
-//            --next;
-//        }
-//    }
-    for (int i = 0; i < 15; ++i)
+    int jacobIndex = 2;
+
+    int next = jacobsthal(jacobIndex++);
+    sequence.push_back(next);
+
+    while (sequence.size() < size)
     {
-      sequence.push_back(jacobsthal(i));
+        next = jacobsthal(jacobIndex++);
+
+        // Adjust 'next' if it exceeds the size
+        if (next > static_cast<int>(size))
+            next = static_cast<int>(size);
+
+        // Add numbers in decreasing order from 'next'
+        while (std::find(sequence.begin(), sequence.end(), next) == sequence.end())
+        {
+            sequence.push_back(next);
+            --next;
+        }
     }
     return sequence;
 }
