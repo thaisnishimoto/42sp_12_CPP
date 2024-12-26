@@ -148,11 +148,14 @@ void mergeInsertionSort(T& container)
 	}
     if (oddOut != -1)
         pend.push_back(oddOut);
-
-    printContainer(sort);
-    printContainer(pend);
+//    printContainer(sort);
+//    printContainer(pend);
 
     //Step 5: Insert the smallest element of the first pair at the start
+    sort.insert(sort.begin(), pend[0]);
+
+    //Step 6:
+
 
 }
 
